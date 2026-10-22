@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark" data-animate="true" data-snap="true" data-sync-scrollbar="true">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sophie Wolf – Marketing Managerin | Creative Marketing Specialist</title>
+  <meta name="description" content="Portfolio von Sophie Wolf – Creative Marketing Specialist (Web, Content & Events) aus dem Bodenseeraum. 8+ Jahre Erfahrung in Design, Events, Web & CRM." />
+  <link rel="icon" type="image/svg+xml" href="assets/svg/wolf.svg" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://sophiewolf.me/" />
+  <meta property="og:title"       content="Sophie Wolf – Marketing Managerin | Creative Marketing Specialist" />
+  <meta property="og:description" content="8+ Jahre Erfahrung in Marketing, Design, Events, Web & CRM. Schauen Sie sich meine Projekte an." />
+  <meta property="og:image"       content="https://sophiewolf.me/assets/jpg/Sophie-wolf-2026-og.jpg" />
+  <meta name="twitter:card"       content="summary_large_image" />
+  <meta name="twitter:title"      content="Sophie Wolf – Marketing Managerin | Creative Marketing Specialist" />
+  <meta name="twitter:description" content="8+ Jahre Erfahrung in Marketing, Design, Events, Web & CRM." />
+  <meta name="twitter:image"      content="https://sophiewolf.me/assets/jpg/Sophie-wolf-2026-og.jpg" />
+
+  <!-- Fonts: system stack, keine externen Anfragen -->
+  <style>
+    :root { --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+  </style>
+
+  <style>
+    /* ─── Reset & Base ───────────────────────────────────────────── */
+    @layer normalize, base, demo, stick, effect, scrollbar, debug, portfolio, contact;
+
+    @layer debug {
+      [data-debug='true'] li { outline: 0.05em dashed currentColor; }
+      [data-debug='true'] :is(h2, li:last-of-type) { outline: 0.05em dashed canvasText; }
+    }
+
+    @layer scrollbar {
+      @property --hue { initial-value: 0; syntax: '<number>'; inherits: false; }
+      @property --chroma { initial-value: 0; syntax: '<number>'; inherits: true; }
+
+      [data-sync-scrollbar='true'] {
+        scrollbar-color: oklch(var(--lightness) var(--chroma) var(--hue)) #0000;
+      }
+      @supports (animation-timeline: scroll()) and (animation-range: 0% 100%) {
+        [data-sync-scrollbar='true'][data-animate='true'] {
+          timeline-scope: --list;
+          scrollbar-color: oklch(var(--lightness) var(--chroma, 0) var(--hue)) #0000;
+          animation-name: change, chroma-on, chroma-off;
+          animation-fill-mode: both;
+          animation-timing-function: linear;
+          animation-range: entry 50% exit 50%, entry 40% entry 50%, exit 30% exit 40%;
+          animation-timeline: --list;
+          ul { view-timeline: --list; }
+        }
+      }
+      @keyframes change { to { --hue: var(--end); } }
+      @keyframes chroma-on { to { --chroma: 0.3; } }
+      @keyframes chroma-off { to { --chroma: 0; } }
+    }
+
+    @layer effect {
+      :root {
+        --start: 220;
+        --end: 340;
+        --lightness: 65%;
+        --base-chroma: 0.3;
+      }
+      [data-theme='dark'] { --lightness: 75%; }
+      [data-theme='light'] { --lightness: 65%; }
+
+      .scroll-words ul {
+        --step: calc((var(--end) - var(--start)) / (var(--count) - 1));
+      }
+      .scroll-words li:not(:last-of-type) {
+        color: oklch(var(--lightness) var(--base-chroma) calc(var(--start) + (var(--step) * var(--i))));
+      }
+
+      @supports (animation-timeline: scroll()) and (animation-range: 0% 100%) {
+        [data-animate='true'] .scroll-words li {
+          opacity: 0.2;
+          animation-name: brighten;
+          &:first-of-type { --start-opacity: 1; }
+          &:last-of-type { --brightness: 1; --end-opacity: 1; }
+          animation-fill-mode: both;
+          animation-timing-function: linear;
+          animation-range: cover calc(50% - 1lh) calc(50% + 1lh);
+          animation-timeline: view();
+        }
+      }
+      @keyframes brighten {
+        0%   { opacity: var(--start-opacity, 0.2); }
+        50%  { opacity: 1; filter: brightness(var(--brightness, 1.2)); }
+        100% { opacity: var(--end-opacity, 0.2); }
+      }
+    }
+
+    @layer stick {
+      .scroll-words {
+        --font-level: 6;
+        display: flex;
+        line-height: 1.25;
+        width: 100%;
+        padding-left: 5rem;
+        @media (max-width: 600px) { padding-left: 1.5rem; }
+      }
+      .scroll-words h2 {
+        position: sticky;
+        top: calc(50% - 0.5lh);
+        font-size: inherit;
+        margin: 0;
+        display: inline-block;
+        height: fit-content;
+        font-weight: 600;
+      }
+      .scroll-words ul {
+        font-weight: 600;
+        padding-inline: 0;
+        margin: 0;
+        list-style-type: none;
+      }
+      [data-snap='true'] .scroll-words li { scroll-snap-align: center; }
+
+      .scroll-words h2,
+      .scroll-words li:last-of-type {
+        background: linear-gradient(canvasText 50%, color-mix(in oklch, canvas, canvasText 25%));
+        background-clip: text;
+        color: #0000;
+      }
+    }
+
+    @layer demo {
+      header {
+        min-height: 100vh;
+        display: flex;
+        place-items: center;
+        width: 100%;
+        padding-inline: 5rem;
+        @media (max-width: 600px) { padding-inline: 1.5rem; }
+      }
+
+      footer {
+        padding-block: 2rem;
+        text-align: center;
+        opacity: 0.5;
+        font-size: 0.9rem;
+      }
+
+      h1 {
+        --font-size-min: 24;
+        --font-level: 8;
+        text-wrap: pretty;
+        line-height: 0.85;
+        margin: 0;
+        padding-bottom: 0.12em;
+        background: linear-gradient(canvasText 60%, color-mix(in oklch, canvas, canvasText));
+        background-clip: text;
+        color: #0000;
+      }
+    }
+
+    @layer base {
+      :root {
+        --font-size-min: 14;
+        --font-size-max: 20;
+        --font-ratio-min: 1.1;
+        --font-ratio-max: 1.33;
+        --font-width-min: 375;
+        --font-width-max: 1500;
+        /* Teal: hell=#007a6e (7:1 auf weiß), dunkel=#0ad9c2 (10:1 auf #111) */
+        --accent-text: light-dark(#007a6e, #0ad9c2);
+      }
+      html { color-scheme: light dark; scroll-behavior: smooth; scroll-padding-top: 56px; }
+      [data-theme='light'] { color-scheme: light only; }
+      [data-theme='dark']  { color-scheme: dark only; }
+
+      :where(.fluid) {
+        --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0)));
+        --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0)));
+        --fluid-preferred: calc((var(--fluid-max) - var(--fluid-min)) / (var(--font-width-max) - var(--font-width-min)));
+        --fluid-type: clamp(
+          (var(--fluid-min) / 16) * 1rem,
+          ((var(--fluid-min) / 16) * 1rem) - (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) + (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+          (var(--fluid-max) / 16) * 1rem
+        );
+        font-size: var(--fluid-type);
+      }
+
+      *, *:after, *:before { box-sizing: border-box; }
+
+      body {
+        display: grid;
+        place-items: center;
+        background: light-dark(white, black);
+        min-height: 100vh;
+        font-family: var(--font-sans);
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        --size: 45px;
+        --line: color-mix(in hsl, canvasText, transparent 70%);
+        content: '';
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        background:
+          linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
+          linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+        mask: linear-gradient(-20deg, transparent 50%, white);
+        top: 0;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* Logo top-left */
+      .logo-sw {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        width: 5rem;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        opacity: 0.8;
+        z-index: 10001;
+        transition: opacity 0.2s;
+      }
+      .logo-sw:is(:hover, :focus-visible) { opacity: 1; }
+      .logo-sw img {
+        width: 5rem;
+        display: block;
+        filter: brightness(0) invert(1);
+        opacity: 0.85;
+        transition: opacity 0.2s;
+      }
+      [data-theme='light'] .logo-sw img { filter: none; }
+
+      .sr-only {
+        position: absolute;
+        width: 1px; height: 1px;
+        padding: 0; margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+      main { width: 100%; }
+    }
+
+    /* ─── Skills & Expertise (Kompetenz-Raster) ─────────────────── */
+    .skills-section { width: 100%; padding: 80px 20px 40px; }
+    .skills-inner { max-width: 1100px; margin: auto; }
+    .skills-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .skills-head .section-title { margin-bottom: 0; }
+    .skills-legend { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; opacity: 0.6; }
+    .skills-legend i { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #0ad9c2; display: inline-block; }
+
+    .skills-lead { margin: 0.9rem 0 0; max-width: 40rem; font-size: 1rem; line-height: 1.5; opacity: 0.7; }
+    .skill-flip--wide { grid-column: 1 / -1; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-flow: row dense;
+      gap: 1rem;
+      margin: 0; padding: 0; list-style: none;
+    }
+    @media (max-width: 960px) { .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 620px) { .skills-grid { grid-template-columns: 1fr; } }
+
+    .skill-card {
+      background: light-dark(white, #111);
+      border: 1px solid light-dark(#e8e8e8, #1e1e1e);
+      border-radius: 1rem;
+      padding: 1.25rem 1.25rem 1.35rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    @media (hover: hover) {
+      .skill-card:hover { border-color: color-mix(in srgb, #0ad9c2 45%, transparent); transform: translateY(-2px); }
+    }
+    .skill-card__head { display: flex; align-items: center; gap: 0.8rem; }
+    .skill-card__icon {
+      width: 2.5rem; height: 2.5rem; flex-shrink: 0;
+      border-radius: 0.65rem;
+      display: grid; place-items: center;
+      color: var(--accent-text);
+      background: color-mix(in srgb, #0ad9c2 12%, transparent);
+    }
+    .skill-card__icon svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .skill-card__title { margin: 0; font-size: 1.05rem; font-weight: 700; line-height: 1.25; color: canvasText; }
+
+    .skill-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+    .skill-card__tags li {
+      font-size: 0.82rem; font-weight: 500; line-height: 1.2;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      background: light-dark(#f4f4f4, #181818);
+      border: 1px solid light-dark(#e2e2e2, #2a2a2a);
+      color: canvasText;
+    }
+    .skill-card__tags li.is-core {
+      font-weight: 650;
+      color: var(--accent-text);
+      background: color-mix(in srgb, #0ad9c2 12%, transparent);
+      border-color: color-mix(in srgb, #0ad9c2 40%, transparent);
+    }
+
+    /* ── Wendekarten: Bild auf der Rückseite (nur Maus/Trackpad) ── */
+    .skill-flip { perspective: 1200px; }
+    .skill-flip__inner { position: relative; height: 100%; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+    .skill-flip .skill-card { height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .skill-flip__back {
+      position: absolute; inset: 0;
+      border-radius: 1rem; overflow: hidden;
+      transform: rotateY(180deg);
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      border: 1px solid color-mix(in srgb, #0ad9c2 45%, transparent);
+      background: #111;
+      display: none;
+    }
+    .skill-flip__back img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .skill-flip__back::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 55%);
+    }
+    .skill-flip__label {
+      position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1.1rem; z-index: 1;
+      color: #fff; font-weight: 700; font-size: 1.15rem; line-height: 1.25;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+    /* Effekt nur bei echter Hover-Möglichkeit und ohne "Bewegung reduzieren" */
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .skill-flip__back { display: block; }
+      .skill-flip:hover .skill-flip__inner { transform: rotateY(180deg); }
+      .skill-flip:hover .skill-card { transform: none; }
+    }
+
+    @media (max-width: 767px) {
+      .skills-section { padding: 56px 16px 24px; }
+    }
+
+    /* ─── About / CV Section ────────────────────────────────────── */
+    @layer about {
+      .about-section {
+        width: 100%;
+        padding: 80px 20px 40px;
+      }
+      .about-inner { max-width: 1100px; margin: auto; }
+
+      /* Profilfoto + Quote nebeneinander */
+      .about-intro {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+        margin-bottom: 3rem;
+      }
+      @media (max-width: 600px) {
+        .about-intro { flex-direction: column; gap: 1.5rem; }
+      }
+      .about-photo {
+        flex-shrink: 0;
+        width: 200px;
+        align-self: center;
+        overflow: hidden;
+      }
+      /* Quadratisches Profilbild (2026) */
+      .about-photo img {
+        width: 100%; height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        border-radius: 0.75rem;
+      }
+
+      /* Pull quote */
+      .about-quote {
+        font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+        font-weight: 600;
+        line-height: 1.4;
+        margin: 0 0 3rem;
+        padding-left: 1.25rem;
+        border-left: 3px solid #0ad9c2;
+        color: canvasText;
+        max-width: 750px;
+      }
+      .about-quote em { font-style: normal; opacity: 0.55; }
+
+      /* Stats row */
+      .about-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin-bottom: 3rem;
+      }
+      @media (max-width: 700px) {
+        .about-stats { grid-template-columns: repeat(2, 1fr); }
+      }
+      .stat-card {
+        background: light-dark(white, #111);
+        border: 1px solid light-dark(#e8e8e8, #222);
+        border-radius: 1rem;
+        padding: 1.25rem 1rem;
+        text-align: center;
+      }
+      .stat-card__number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--accent-text);
+        line-height: 1;
+        margin-bottom: 0.35rem;
+        display: block;
+      }
+      .stat-card__label {
+        font-size: 0.75rem;
+        opacity: 0.55;
+        font-weight: 500;
+        line-height: 1.3;
+      }
+
+      /* Timeline 2-spaltig (synchrone Zeilen) */
+      .about-timeline-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+        margin-bottom: 2.5rem;
+      }
+      @media (max-width: 700px) {
+        .about-timeline-grid { grid-template-columns: 1fr; }
+      }
+      .timeline-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      /* Aktuelle Station (dtm group) dezent hervorheben */
+      .timeline__item--current {
+        position: relative;
+        background: color-mix(in srgb, #0ad9c2 9%, light-dark(white, #111));
+        border-color: color-mix(in srgb, #0ad9c2 50%, transparent);
+        border-left-width: 4px;
+        box-shadow: 0 6px 24px color-mix(in srgb, #0ad9c2 10%, transparent);
+      }
+      .timeline__badge {
+        font-style: normal;
+        display: inline-block;
+        position: absolute;
+        top: 0.9rem; right: 1rem;
+        padding: 0.15rem 0.6rem;
+        font-weight: 700;
+        border-radius: 9999px;
+        font-size: 0.66rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--accent-text);
+        background: color-mix(in srgb, #0ad9c2 18%, transparent);
+      }
+      .timeline-col-header {
+        font-size: 1rem;
+        letter-spacing: 0.04em;
+        font-weight: 700;
+        opacity: 0.75;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #0ad9c2;
+        margin-bottom: 0.25rem;
+      }
+
+      /* Skills-Bereich unter Timeline */
+      .about-skills-section { margin-bottom: 2.5rem; }
+      .about-skills-wrap {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 1.25rem;
+        margin-top: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+
+      /* CRM/KI + Sprachen/Zertifikate nebeneinander */
+      .about-skills-bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem 2.5rem;
+        align-items: start;
+        margin-top: 0;
+      }
+      @media (max-width: 700px) {
+        .about-skills-bottom { grid-template-columns: 1fr; }
+      }
+      .lang-cert-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        align-items: start;
+        margin-bottom: 2.5rem;
+      }
+      @media (max-width: 600px) {
+        .lang-cert-grid { grid-template-columns: 1fr; gap: 2rem; }
+      }
+      .about-skills-bottom-left { display: flex; flex-direction: column; gap: 1.25rem; }
+      .about-skills-bottom-right { display: flex; flex-direction: column; gap: 1.5rem; }
+
+      /* Sprachkenntnisse */
+      .about-languages { margin-bottom: 0; }
+      .language-circles {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+        align-items: center;
+      }
+      .lang-circle svg { width: 88px; height: 88px; display: block; }
+      .lang-track { stroke: light-dark(#ddd, #2a2a2a); }
+      .lang-bg   { fill:   light-dark(white, #111); }
+
+      /* LinkedIn-Button Varianten */
+      .about-linkedin-btn--desktop { display: inline-flex; align-items: center; }
+      .about-linkedin-btn--mobile {
+        display: none;
+        color: #fff;
+        transition: opacity 0.15s;
+        position: absolute;
+        bottom: 6px;
+        right: -10px;
+      }
+      .about-linkedin-btn--mobile:hover { opacity: 0.65; }
+      /* Foto-Spalte: Bild mit LinkedIn-Icon rechts unten */
+      .about-photo-col {
+        position: relative;
+        flex-shrink: 0;
+      }
+      @media (max-width: 767px) {
+        .about-linkedin-btn--desktop { display: none; }
+        .about-linkedin-btn--mobile { display: inline-block; }
+      }
+
+      /* About-Footer (Zertifikate + LinkedIn) */
+      .about-footer {
+        display: flex;
+        gap: 3rem;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+
+      /* Lightboxen-Karte: Auto-Galerie */
+      .card-gallery { position: relative; width: 100%; height: 100%; }
+      .card-gallery img {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+      .card-gallery img.active { opacity: 1; }
+
+      /* Portfolio card mit contain (z.B. transparente PNGs) */
+      .portfolio-card__img--contain {
+        background: light-dark(#f4f4f4, #0e0e0e);
+      }
+      .portfolio-card__img--contain img {
+        object-fit: contain;
+        object-position: center;
+        padding: 0.5rem;
+      }
+
+      /* Timeline as cards */
+      .timeline { position: relative; }
+      .timeline__section-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        opacity: 0.4;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .timeline__item {
+        background: light-dark(white, #111);
+        border: 1px solid light-dark(#e8e8e8, #1e1e1e);
+        border-left: 3px solid #0ad9c2;
+        border-radius: 0.75rem;
+        padding: 1rem 1.2rem;
+        margin-bottom: 0.75rem;
+      }
+      .timeline__date {
+        font-size: 0.72rem;
+        opacity: 0.45;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        display: block;
+        margin-bottom: 0.2rem;
+      }
+      .timeline__role {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: canvasText;
+        display: block;
+        margin-bottom: 0.15rem;
+      }
+      .timeline__company {
+        font-size: 0.82rem;
+        opacity: 0.55;
+        display: block;
+      }
+      .timeline__duration {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--accent-text);
+        background: color-mix(in srgb, #0ad9c2 12%, transparent);
+        border: 1px solid color-mix(in srgb, #0ad9c2 30%, transparent);
+        border-radius: 9999px;
+        padding: 0.15rem 0.6rem;
+        letter-spacing: 0.02em;
+      }
+
+      /* Skills Tags */
+      .skills-group { margin-bottom: 1.25rem; }
+      .skills-group__label {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        opacity: 0.4;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+        display: block;
+      }
+      .skills-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+      .skills-tags span {
+        font-size: 0.78rem;
+        padding: 0.25rem 0.7rem;
+        border-radius: 9999px;
+        background: light-dark(#f4f4f4, #161616);
+        border: 1px solid light-dark(#e0e0e0, #2a2a2a);
+        color: canvasText;
+        font-weight: 500;
+      }
+
+      /* Certs */
+      .certs { margin-bottom: 1.5rem; }
+      .cert-item {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        background: light-dark(white, #111);
+        border: 1px solid light-dark(#e8e8e8, #1e1e1e);
+        border-radius: 0.75rem;
+        padding: 0.85rem 1rem;
+        margin-bottom: 0.6rem;
+      }
+      .cert-icon {
+        width: 38px; height: 38px;
+        border-radius: 9px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.6rem;
+        font-weight: 900;
+        color: white;
+        flex-shrink: 0;
+        letter-spacing: -0.03em;
+      }
+      /* t3n Logo: breites Querformat, kein Hintergrund */
+      .cert-icon--t3n {
+        width: auto;
+        height: 28px;
+        background: none;
+        border-radius: 0;
+        opacity: 0.7;
+      }
+      .cert-icon--t3n svg {
+        height: 28px;
+        width: auto;
+        fill: canvasText;
+      }
+      .cert-item > div { display: flex; flex-direction: column; gap: 0.1rem; }
+      .cert-item strong { font-size: 0.85rem; font-weight: 700; color: canvasText; }
+      .cert-item span { font-size: 0.72rem; opacity: 0.45; }
+
+      .about-linkedin-note {
+        font-size: 0.78rem;
+        opacity: 0.45;
+        margin-top: 0.5rem;
+        font-style: italic;
+      }
+    }
+
+    /* ─── Portfolio Section ──────────────────────────────────────── */
+    @layer portfolio {
+      .portfolio-section {
+        width: 100%;
+        padding: 80px 20px;
+        background: light-dark(#f5f5f7, #0a0a0a);
+      }
+      .portfolio-inner {
+        max-width: 1200px;
+        margin: auto;
+      }
+      .section-label {
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin-bottom: 0.5rem;
+      }
+      .section-title {
+        --font-level: 5;
+        margin: 0 0 3rem;
+        font-weight: 700;
+        background: linear-gradient(canvasText 60%, color-mix(in oklch, canvas, canvasText));
+        background-clip: text;
+        color: #0000;
+      }
+
+      /* Featured card (DTM) */
+      .portfolio-featured {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        align-items: center;
+        background: light-dark(white, #111);
+        border: 1px solid light-dark(#e0e0e0, #222);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        margin-bottom: 2.5rem;
+      }
+      @media (max-width: 768px) {
+        .portfolio-featured { grid-template-columns: 1fr; }
+      }
+
+      /* Browser mockup */
+      .browser-mockup {
+        border-radius: 0.75rem;
+        overflow: hidden;
+        border: 1px solid light-dark(#ddd, #333);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+      }
+      .browser-mockup .event-gallery__thumbs {
+        padding: 0.4rem 0.6rem 0.5rem;
+        background: light-dark(#e8e8e8, #1e1e1e);
+        gap: 0.35rem;
+      }
+      .browser-mockup .event-gallery__thumbs img {
+        width: 60px; height: 40px;
+      }
+      .browser-bar {
+        background: light-dark(#e8e8e8, #1e1e1e);
+        padding: 0.6rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .browser-dot {
+        width: 12px; height: 12px;
+        border-radius: 50%;
+      }
+      .browser-dot:nth-child(1) { background: #ff5f57; }
+      .browser-dot:nth-child(2) { background: #febc2e; }
+      .browser-dot:nth-child(3) { background: #28c840; }
+      .browser-url {
+        margin-left: 0.75rem;
+        font-size: 0.75rem;
+        background: light-dark(#fff, #2a2a2a);
+        border-radius: 0.3rem;
+        padding: 0.2rem 0.75rem;
+        flex: 1;
+        color: light-dark(#555, #aaa);
+        font-family: monospace;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .browser-screen {
+        background: light-dark(#f0f0f0, #1a1a1a);
+        aspect-ratio: 16/10;
+        position: relative;
+        overflow: hidden;
+      }
+      .browser-screen img,
+      .browser-screen .card-gallery {
+        width: 100%; height: 100%;
+        display: block;
+      }
+      .browser-screen img {
+        object-fit: cover;
+        object-position: top;
+      }
+      .browser-screen-placeholder {
+        text-align: center;
+        opacity: 0.3;
+        font-size: 0.85rem;
+        padding: 1rem;
+      }
+
+      /* Featured info */
+      .portfolio-featured__info { padding: 1rem 0; }
+      /* netforum: Aufgaben nach Phasen (Label-Stil wie Timeline/Zertifikate, Pills wie Event-Tags) */
+      .portfolio-featured .event-roles__intro { margin: 1.25rem 0 0.9rem; font-weight: 600; color: canvasText; }
+      .event-roles { display: flex; flex-direction: column; gap: 0.9rem; }
+      .portfolio-featured .event-roles__label {
+        line-height: 1.3;
+        font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+        opacity: 0.4; font-weight: 700; margin: 0 0 0.4rem;
+      }
+      .event-roles .event-tags { margin-top: 0; }
+      .portfolio-tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        background: #0ad9c2;
+        color: #fff;
+        padding: 0.2rem 0.6rem;
+        border-radius: 9999px;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      .portfolio-featured__info h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0 0 1rem;
+        line-height: 1.1;
+        color: canvasText;
+      }
+      .portfolio-featured__info p {
+        margin: 0 0 1.5rem;
+        opacity: 0.7;
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+      .portfolio-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.7rem 1.4rem;
+        background: canvasText;
+        color: canvas;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: opacity 0.2s;
+      }
+      .portfolio-btn:hover { opacity: 0.8; }
+      .portfolio-btn--outline {
+        background: transparent;
+        color: canvasText;
+        border: 1px solid light-dark(#ddd, #444);
+      }
+
+      /* Work grid */
+      .portfolio-grid-header {
+        margin: 3rem 0 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        opacity: 0.7;
+      }
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+      }
+      .portfolio-card {
+        background: light-dark(white, #111);
+        border: 1px solid light-dark(#e0e0e0, #222);
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: transform 0.25s, box-shadow 0.25s;
+        cursor: pointer;
+      }
+      .portfolio-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      }
+      .portfolio-card__img {
+        aspect-ratio: 4/3;
+        background: light-dark(#f0f0f0, #1a1a1a);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .portfolio-card__img img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.35s;
+      }
+      .portfolio-card:hover .portfolio-card__img img { transform: scale(1.04); }
+      .portfolio-card__placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%; height: 100%;
+        opacity: 0.25;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 1rem;
+      }
+      .portfolio-card__placeholder svg { width: 2rem; height: 2rem; }
+      .portfolio-card__info {
+        padding: 1rem 1.2rem 1.2rem;
+      }
+      .portfolio-card__cat {
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.5;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+      .portfolio-card__title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+        color: canvasText;
+      }
+      .portfolio-card__link {
+        display: inline-block;
+        margin-top: 0.6rem;
+        font-size: 0.8rem;
+        color: var(--accent-text);
+        text-decoration: none;
+        font-weight: 500;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .portfolio-card__link:hover { text-decoration: underline; }
+
+      /* Browser-Bar in kleiner Kachel */
+      .portfolio-card__img--browser {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+      }
+      .card-browser-bar {
+        background: light-dark(#e8e8e8, #1e1e1e);
+        padding: 0.28rem 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.28rem;
+        flex-shrink: 0;
+        z-index: 1;
+      }
+      .card-browser-bar .browser-dot { width: 8px; height: 8px; }
+      .card-browser-url {
+        margin-left: 0.35rem;
+        font-size: 0.6rem;
+        background: light-dark(#fff, #2a2a2a);
+        border-radius: 0.2rem;
+        padding: 0.1rem 0.45rem;
+        flex: 1;
+        color: light-dark(#555, #aaa);
+        font-family: monospace;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .portfolio-card__img--browser .card-gallery { flex: 1; }
+
+      /* "Add your work" hint card */
+      .portfolio-card--add {
+        border-style: dashed;
+        opacity: 0.4;
+      }
+
+      /* Event Gallery (netforum) */
+      .portfolio-event {
+        grid-template-columns: 2fr 3fr;
+      }
+      @media (max-width: 768px) {
+        .portfolio-event { grid-template-columns: 1fr; }
+      }
+      .event-gallery { display: flex; flex-direction: column; gap: 0; }
+      .event-gallery__main {
+        border-radius: 0.75rem 0.75rem 0 0;
+        overflow: hidden;
+        aspect-ratio: 16/10;
+        background: light-dark(#f0f0f0, #1a1a1a);
+        width: 100%;
+      }
+      .event-gallery__main img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: opacity 0.25s;
+      }
+      .event-gallery__thumbs {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0;
+        width: 100%;
+      }
+      .event-gallery__thumbs img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        cursor: pointer;
+        opacity: 0.55;
+        transition: opacity 0.2s, outline 0.1s;
+        outline: 2px solid transparent;
+        outline-offset: -2px;
+        display: block;
+      }
+      /* Thumbs: keine Radius-Ecken nötig, Stats schließen direkt an */
+      .event-gallery__thumbs img:hover { opacity: 0.85; }
+      .event-gallery__thumbs img.active { opacity: 1; outline-color: #0ad9c2; }
+
+      .event-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+      .event-pill {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.65rem;
+        border-radius: 9999px;
+        border: 1px solid light-dark(#ddd, #333);
+        color: canvasText;
+        opacity: 0.7;
+        white-space: nowrap;
+      }
+
+      /* Duo: DTM + Fahrzeugbeklebung nebeneinander */
+      .portfolio-duo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      @media (max-width: 900px) {
+        .portfolio-duo { grid-template-columns: 1fr; }
+      }
+      .portfolio-duo .portfolio-featured {
+        grid-template-columns: 1fr;
+        margin-bottom: 0;
+        flex-direction: column;
+      }
+
+      /* Fahrzeugbeklebung: Video links, Thumbs rechts daneben */
+      .vehicle-visual {
+        display: flex;
+        gap: 0.5rem;
+        align-items: stretch;
+        margin-bottom: 0;
+      }
+      .vehicle-video-wrap {
+        width: 42%;
+        flex-shrink: 0;
+        aspect-ratio: 9/16;
+        border-radius: 0.65rem;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+      }
+      .vehicle-video-wrap video {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .vehicle-thumbs-v {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .vehicle-thumb-v {
+        flex: 1;
+        border-radius: 0.4rem;
+        overflow: hidden;
+        background: light-dark(#f0f0f0, #1a1a1a);
+        cursor: zoom-in;
+      }
+      .vehicle-thumb-v img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: opacity 0.2s, transform 0.25s;
+      }
+      .vehicle-thumb-v:hover img { opacity: 0.85; transform: scale(1.04); }
+
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.88);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        cursor: zoom-out;
+        padding: 2rem;
+      }
+      .lightbox.open { display: flex; }
+      .lightbox img {
+        max-width: 90vw;
+        max-height: 88vh;
+        border-radius: 0.6rem;
+        object-fit: contain;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+      }
+      .lightbox__close {
+        position: absolute;
+        top: 1.2rem; right: 1.8rem;
+        color: #fff;
+        font-size: 2rem;
+        line-height: 1;
+        cursor: pointer;
+        opacity: 0.7;
+        background: none;
+        border: none;
+        padding: 0;
+      }
+      .lightbox__close:hover { opacity: 1; }
+    }
+
+    /* ─── Contact Section ────────────────────────────────────────── */
+    @layer contact {
+      .contact-section {
+        width: 100%;
+        padding: 80px 20px;
+      }
+      .contact-inner {
+        max-width: 860px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      @media (max-width: 600px) {
+        .contact-inner { grid-template-columns: 1fr; }
+      }
+      .contact-card {
+        background: light-dark(white, #111);
+        border: 1px solid light-dark(#e0e0e0, #222);
+        border-radius: 1.25rem;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .contact-card h4 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: canvasText;
+      }
+      .contact-card p {
+        margin: 0;
+        opacity: 0.65;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      .contact-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.65rem 1.4rem;
+        border-radius: 9999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.2s;
+        cursor: pointer;
+      }
+      .contact-btn:hover { opacity: 0.8; }
+      .contact-btn--primary { background: canvasText; color: canvas; }
+      .contact-btn--outline { background: transparent; color: canvasText; border: 1px solid light-dark(#ccc, #444); }
+    }
+
+    /* ─── Navigation ──────────────────────────────────────────────── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10000;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.75rem 1.5rem 0.75rem 7rem;
+      background: light-dark(rgba(255,255,255,0.85), rgba(0,0,0,0.85));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid light-dark(rgba(0,0,0,0.06), rgba(255,255,255,0.07));
+      transition: background 0.3s;
+    }
+    .site-nav a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: canvasText;
+      text-decoration: none;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+      opacity: 0.7;
+    }
+    .site-nav a:hover { background: light-dark(rgba(0,0,0,0.07), rgba(255,255,255,0.1)); opacity: 1; }
+    .site-nav a.nav-cta {
+      background: #0ad9c2;
+      color: #000;
+      opacity: 1;
+      font-weight: 600;
+    }
+    .site-nav a.nav-cta:hover { background: #09c3af; }
+    @media (max-width: 600px) {
+      .site-nav { gap: 0; padding: 0.6rem 0.75rem 0.6rem 5rem; }
+      .site-nav a { font-size: 0.72rem; padding: 0.3rem 0.5rem; }
+    }
+
+    /* ─── Referenz-Zitate ─────────────────────────────────────────── */
+    .quotes-section {
+      width: 100%;
+      padding: 60px 20px;
+    }
+    .quotes-inner {
+      max-width: 1100px;
+      margin: auto;
+    }
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .quote-card {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid light-dark(#e8e8e8, #222);
+      background: light-dark(#fafafa, #0e0e0e);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .quote-card__text {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: canvasText;
+      font-style: italic;
+      margin: 0;
+    }
+    .quote-card__text::before { content: '„'; }
+    .quote-card__text::after  { content: '"'; }
+    .quote-card__source {
+      font-size: 0.78rem;
+      opacity: 0.5;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* ─── netforum Event-Stats ─────────────────────────────────────── */
+    .netforum-stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      width: 100%;
+      border-radius: 0 0 0.75rem 0.75rem;
+      overflow: hidden;
+      background: light-dark(rgba(0,0,0,0.04), rgba(255,255,255,0.05));
+    }
+    .netforum-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.75rem 0.5rem;
+      text-align: center;
+      border-left: 1px solid light-dark(rgba(0,0,0,0.06), rgba(255,255,255,0.06));
+    }
+    .netforum-stat:first-child { border-left: none; }
+    .netforum-stat__num {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent-text);
+      line-height: 1;
+    }
+    .netforum-stat__label {
+      font-size: 0.65rem;
+      opacity: 0.6;
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── Hamburger & Mobile Nav ──────────────────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 10002;
+      flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: canvasText;
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.2s, width 0.2s;
+      transform-origin: center;
+    }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 52px;
+      background: light-dark(rgba(255,255,255,0.97), rgba(0,0,0,0.97));
+      backdrop-filter: blur(16px);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: canvasText;
+      text-decoration: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.5rem;
+      transition: background 0.15s;
+    }
+    .mobile-menu a:hover { background: light-dark(rgba(0,0,0,0.06), rgba(255,255,255,0.08)); }
+    .mobile-menu a.nav-cta {
+      background: #0ad9c2;
+      color: #000;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 767px) {
+      /* Show hamburger, hide desktop links */
+      .hamburger { display: flex; }
+      .site-nav > a { display: none; }
+      .site-nav { padding: 0.6rem 0.75rem 0.6rem 5rem; justify-content: flex-end; }
+
+      /* Mobile: Foto-Spalte links, Text rechts */
+      .about-intro { flex-direction: row !important; align-items: flex-start !important; gap: 1rem; }
+      .about-photo { width: 110px; }
+      .about-photo-col { width: 110px; flex-shrink: 0; }
+
+      /* Netforum stats: 3+2 on mobile */
+      .netforum-stats { grid-template-columns: repeat(3, 1fr); }
+
+      /* Prevent overflow */
+      img, video { max-width: 100%; height: auto; }
+      .about-inner, .portfolio-inner, .quotes-inner,
+      .contact-inner, .about-timeline-grid, .lang-cert-grid { max-width: 100%; }
+
+      /* Portfolio cards: ensure images fill their frame */
+      .portfolio-card { min-width: 0; }
+      .portfolio-card__img { width: 100%; }
+      .portfolio-card__img img,
+      .card-gallery img { width: 100%; height: 100%; object-fit: cover; }
+
+      /* Right-side spacing: text doesn't run to screen edge */
+      .about-section { padding-inline: 1.25rem; }
+      .portfolio-section { padding-inline: 1rem; }
+      .about-quote { font-size: clamp(1rem, 5vw, 1.4rem); overflow-wrap: break-word; }
+
+      /* Timeline text wrapping */
+      .timeline__role, .timeline__company { word-break: break-word; }
+
+      /* Section inner containers */
+      .about-section .about-inner,
+      .portfolio-section .portfolio-inner { padding-inline: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Fixed logo -->
+  <a class="logo-sw" href="#" rel="noreferrer noopener">
+    <img src="assets/png/wolf.png" alt="Sophie Wolf" />
+  </a>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Hauptnavigation">
+    <a href="#portfolio">Portfolio</a>
+    <a href="#about">Lebenslauf</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact" class="nav-cta">Kontakt</a>
+    <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menü Overlay -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
+    <a href="#portfolio">Portfolio</a>
+    <a href="#about">Lebenslauf</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact" class="nav-cta">Kontakt</a>
+  </div>
+
+  <!-- ① Hero -->
+  <header>
+    <h1 class="fluid">I am<br />Sophie.</h1>
+  </header>
+
+  <main>
+
+    <!-- ② Scroll-Wörter Animation -->
+    <section class="scroll-words content fluid">
+      <h2><span aria-hidden="true">I am&nbsp;</span><span class="sr-only">Sophie Wolf — I</span></h2>
+      <ul aria-hidden="true" style="--count: 21">
+        <li style="--i: 0">creative.</li>
+        <li style="--i: 1">strategic.</li>
+        <li style="--i: 2">designing.</li>
+        <li style="--i: 3">branding.</li>
+        <li style="--i: 4">marketing.</li>
+        <li style="--i: 5">social.</li>
+        <li style="--i: 6">digital.</li>
+        <li style="--i: 7">organized.</li>
+        <li style="--i: 8">web.</li>
+        <li style="--i: 9">communicating.</li>
+        <li style="--i: 10">event.</li>
+        <li style="--i: 11">curious.</li>
+        <li style="--i: 12">resilient.</li>
+        <li style="--i: 13">certified.</li>
+        <li style="--i: 14">visual.</li>
+        <li style="--i: 15">inspired.</li>
+        <li style="--i: 16">hands-on.</li>
+        <li style="--i: 17">dedicated.</li>
+        <li style="--i: 18">versatile.</li>
+        <li style="--i: 19">growing.</li>
+        <li style="--i: 20">doing it.</li>
+      </ul>
+    </section>
+
+
+    <!-- ③ Scroll-Words folgt direkt, Skills-Slider kommt nach Portfolio -->
+
+    <!-- ⑤ Portfolio / Meine Arbeiten -->
+    <section class="portfolio-section" id="portfolio">
+      <div class="portfolio-inner">
+        <p class="section-label">Portfolio</p>
+        <h2 class="section-title fluid">Meine Arbeiten</h2>
+
+        <!-- Featured: netforum 2025 -->
+        <div class="portfolio-featured portfolio-event">
+          <div class="portfolio-featured__info">
+            <span class="portfolio-tag">Event · Web · Marketing</span>
+            <h3>netforum 2025</h3>
+            <p>
+              Zwei Tage, drei Bühnen, 36+ Speaker: Am 10. und 11. September 2025 trafen sich im Festspielhaus Bregenz Entscheider aus Wirtschaft, Wissenschaft und Politik – zu KI, Cybersecurity, Smart Energy und digitaler Souveränität, mit Gästen wie Karl-Theodor zu Guttenberg und Anna Kopp (Microsoft).
+            </p>
+            <p class="event-roles__intro">Mein Part im kleinen Orga-Team – von der ersten Idee bis zum letzten Moment:</p>
+            <div class="event-roles">
+            <div class="event-roles__group">
+              <p class="event-roles__label">Vorbereitung</p>
+              <div class="event-tags">
+                <span class="event-pill">Organisation im Vorfeld</span>
+                <span class="event-pill">Sponsoren- &amp; Partnerkommunikation</span>
+              </div>
+            </div>
+            <div class="event-roles__group">
+              <p class="event-roles__label">Web &amp; Marketing</p>
+              <div class="event-tags">
+                <span class="event-pill">Betreuung der Event-Webseite</span>
+                <span class="event-pill">Marketingmaterialien digital &amp; print</span>
+                <span class="event-pill">Präsentationen</span>
+              </div>
+            </div>
+            <div class="event-roles__group">
+              <p class="event-roles__label">Vor Ort</p>
+              <div class="event-tags">
+                <span class="event-pill">Organisation während der Veranstaltung</span>
+                <span class="event-pill">Messestand</span>
+                <span class="event-pill">Kundenbetreuung</span>
+                <span class="event-pill">Fotografie &amp; Videografie</span>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="event-gallery">
+            <div class="event-gallery__main">
+              <img src="assets/jpg/publikum-uebersicht-netforum.jpg" alt="netforum 2025 – Publikumsübersicht" id="gallery-main" />
+            </div>
+            <div class="event-gallery__thumbs" id="gallery-thumbs">
+              <img src="assets/jpg/publikum-uebersicht-netforum.jpg" alt="Publikumsübersicht" class="active" />
+              <img src="assets/webp/gabriel-publikum-uebersicht-netforum.webp" alt="Gabriel & Publikum" />
+              <img src="assets/webp/guttenberg-publikum-uebersicht-netforum.webp" alt="Guttenberg & Publikum" />
+              <img src="assets/webp/galadinner-netforum.webp" alt="Galadinner" />
+              <img src="assets/webp/podiumdiskussion-netforum.webp" alt="Podiumsdiskussion" />
+              <img src="assets/webp/jan-moll-praesentation-netforum2025.webp" alt="Präsentation Jan Moll" />
+              <img src="assets/webp/Auswahl-Printmaterial-netforum.webp" alt="Printmaterial Auswahl" />
+            </div>
+            <div class="netforum-stats">
+              <div class="netforum-stat">
+                <span class="netforum-stat__num">358</span>
+                <span class="netforum-stat__label">Teilnehmende</span>
+              </div>
+              <div class="netforum-stat">
+                <span class="netforum-stat__num">190</span>
+                <span class="netforum-stat__label">Unternehmen</span>
+              </div>
+              <div class="netforum-stat">
+                <span class="netforum-stat__num">36+</span>
+                <span class="netforum-stat__label">Speaker</span>
+              </div>
+              <div class="netforum-stat">
+                <span class="netforum-stat__num">25</span>
+                <span class="netforum-stat__label">Partner</span>
+              </div>
+              <div class="netforum-stat">
+                <span class="netforum-stat__num">3</span>
+                <span class="netforum-stat__label">Bühnen</span>
+              </div>
+            </div>
+            <p style="font-size:0.65rem;opacity:0.3;margin-top:0.35rem;text-align:right;">© Fotos: dtm Datentechnik Moll GmbH</p>
+          </div>
+        </div>
+
+        <!-- Print & Corporate Design Grid -->
+        <p class="portfolio-grid-header">Print &amp; Corporate Design</p>
+        <div class="portfolio-grid">
+
+          <!-- 1) DTM Website (Browser-Kachel mit Auto-Galerie) -->
+          <div class="portfolio-card">
+            <div class="portfolio-card__img portfolio-card__img--browser">
+              <div class="card-browser-bar">
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <span class="card-browser-url">www.dtm-group.de</span>
+              </div>
+              <div class="card-gallery" id="dtm-gallery">
+                <img src="assets/webp/dtm-preview.webp" alt="DTM Startseite" class="active" />
+                <img src="assets/webp/website-sample1.webp" alt="Ansicht 1" />
+                <img src="assets/webp/website-sample2.webp" alt="Ansicht 2" />
+                <img src="assets/webp/website-sample3.webp" alt="Ansicht 3" />
+              </div>
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Website</p>
+              <h4 class="portfolio-card__title">DTM Website</h4>
+              <a href="https://www.dtm-group.de" target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
+                Website ansehen →
+              </a>
+            </div>
+          </div>
+
+          <!-- 2) Fahrzeugbeklebung (Auto-Galerie + Video-Button) -->
+          <div class="portfolio-card">
+            <div class="portfolio-card__img">
+              <div class="card-gallery" id="vehicle-gallery">
+                <img src="assets/webp/fahrzeugbeklebung-Seite1.webp" alt="Seite links" class="active" />
+                <img src="assets/webp/fahrzeugbeklebung-Seite2.webp" alt="Seite rechts" />
+                <img src="assets/webp/fahrzeugbeklebung-hinten.webp" alt="Hinten" />
+              </div>
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Corporate Design · Print</p>
+              <h4 class="portfolio-card__title">Fahrzeugbeklebung</h4>
+              <button class="portfolio-card__link" onclick="openLightbox('assets/mp4/Fahrzeugbeklebung.mp4','','video')">
+                Video ansehen →
+              </button>
+            </div>
+          </div>
+
+          <!-- 3) Messe-Lightboxen (Auto-Galerie) -->
+          <div class="portfolio-card">
+            <div class="portfolio-card__img">
+              <div class="card-gallery" id="lightboxen-gallery">
+                <img src="assets/webp/lightboxen-quadratisch.webp" alt="Lightbox quadratisch" class="active" />
+                <img src="assets/webp/lightboxen-schmal.webp" alt="Lightbox schmal" />
+              </div>
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Print · Messe · Corporate Design</p>
+              <h4 class="portfolio-card__title">Messe-Lightboxen</h4>
+            </div>
+          </div>
+
+          <!-- 2) Vaiking Messekarte -->
+          <div class="portfolio-card">
+            <div class="portfolio-card__img">
+              <img src="assets/webp/Visitenkarte-Vaiking.webp" alt="Vaiking Messekarte" />
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Corporate Design · Messe</p>
+              <h4 class="portfolio-card__title">Vaiking – Messekarte</h4>
+            </div>
+          </div>
+
+          <!-- 3) DTM Printbroschüren -->
+          <div class="portfolio-card">
+            <div class="portfolio-card__img">
+              <img src="assets/webp/dtm-broschueren.webp" alt="DTM Printbroschüren" />
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Print · Corporate Design</p>
+              <h4 class="portfolio-card__title">DTM – Printbroschüren</h4>
+            </div>
+          </div>
+
+          <!-- 4) DTM Werbemittel -->
+          <div class="portfolio-card">
+            <div class="portfolio-card__img">
+              <img src="assets/webp/dtm-werbemittel.webp" alt="DTM Werbemittel – Sonnenbrille, Meterstab, Kugelschreiber" />
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Corporate Design · Werbemittel</p>
+              <h4 class="portfolio-card__title">DTM – Werbemittel</h4>
+            </div>
+          </div>
+
+          <!-- 5) Stellenanzeige -->
+          <div class="portfolio-card">
+            <div class="portfolio-card__img">
+              <img src="assets/webp/Stellenanzeige-DH-Studium.webp" alt="Stellenanzeige DH Studium" />
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Print · Recruiting</p>
+              <h4 class="portfolio-card__title">Stellenanzeige DH-Studium</h4>
+            </div>
+          </div>
+
+          <!-- 6) Adventskalender -->
+          <div class="portfolio-card">
+            <div class="portfolio-card__img">
+              <img src="assets/webp/adventskalender.webp" alt="Adventskalender" />
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Print · Corporate Design</p>
+              <h4 class="portfolio-card__title">Adventskalender</h4>
+            </div>
+          </div>
+
+          <!-- 7) Social Media -->
+          <div class="portfolio-card">
+            <div class="portfolio-card__img portfolio-card__img--contain">
+              <img src="assets/webp/socials-dtm.webp" alt="Social Media DTM" />
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Social Media · Analyse · Team</p>
+              <h4 class="portfolio-card__title">Social Media – Betreuung &amp; Auswertung</h4>
+            </div>
+          </div>
+
+          <!-- Mehr kommt noch – Platzhalter -->
+          <div class="portfolio-card portfolio-card--add">
+            <div class="portfolio-card__img">
+              <div class="portfolio-card__placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                Newsletter, Broschüren &amp; mehr folgen
+              </div>
+            </div>
+            <div class="portfolio-card__info">
+              <p class="portfolio-card__cat">Kommt bald</p>
+              <h4 class="portfolio-card__title">Weitere Projekte</h4>
+            </div>
+          </div>
+
+        </div><!-- /portfolio-grid -->
+      </div>
+    </section>
+
+    <!-- ④ Über mich -->
+    <section class="about-section" id="about">
+      <div class="about-inner">
+        <p class="section-label">Über mich</p>
+        <h2 class="section-title fluid">Wer ich bin.</h2>
+
+        <!-- Foto + Quote -->
+        <div class="about-intro">
+          <!-- Foto-Spalte: Bild + LinkedIn-Icon (nur Mobile) darunter -->
+          <div class="about-photo-col">
+            <div class="about-photo">
+              <img src="assets/webp/Sophie-wolf-2026.webp" alt="Sophie Wolf" width="600" height="600" />
+            </div>
+            <a href="https://www.linkedin.com/in/sophie-wolf-marketing/" target="_blank" rel="noopener noreferrer" class="about-linkedin-btn--mobile" aria-label="LinkedIn Profil">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+          <!-- Text-Spalte: Quote + Desktop-Button -->
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <p class="about-quote" style="margin:0">
+              Kreativ, strategisch, hands-on — <em>neugierig auf neue Perspektiven und auf der Suche nach den nächsten Herausforderungen, die mich wachsen lassen.</em>
+            </p>
+            <a href="https://www.linkedin.com/in/sophie-wolf-marketing/" target="_blank" rel="noopener noreferrer" class="portfolio-btn about-linkedin-btn--desktop" style="align-self:flex-start;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:0.4em;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              Auf LinkedIn vernetzen
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="8" data-suffix="+">8+</span>
+            <span class="stat-card__label">Jahre Marketing &amp; Design</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="3">3</span>
+            <span class="stat-card__label">Qualifikationen &amp; Abschlüsse</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="10" data-suffix="+">10+</span>
+            <span class="stat-card__label">Tools &amp; Technologien</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="2">2</span>
+            <span class="stat-card__label">t3n-Zertifikate 2026</span>
+          </div>
+        </div>
+
+        <!-- Timeline: Ausbildung | Berufserfahrung (chronologisch, älteste oben) -->
+        <div class="about-timeline-grid">
+          <!-- Ausbildung -->
+          <div class="timeline-col">
+            <p class="timeline-col-header">Ausbildung</p>
+            <div class="timeline__item">
+              <span class="timeline__date">2011 – 2014</span>
+              <strong class="timeline__role">Technisches Gymnasium – Gestaltungs- &amp; Medientechnik</strong>
+              <span class="timeline__company">Claude Dornier Schule · Friedrichshafen</span>
+              <span class="timeline__duration">3 Jahre</span>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__date">2015 – 2018</span>
+              <strong class="timeline__role">Bachelor – Werbung &amp; Marktkommunikation</strong>
+              <span class="timeline__company">DHBW Ravensburg · Schwäbisch Media</span>
+              <span class="timeline__duration">3 Jahre · Duales Studium</span>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__date">Apr. 2023 – Apr. 2024</span>
+              <strong class="timeline__role">Weiterbildung Webdesigner – Webdesign &amp; Usability</strong>
+              <span class="timeline__company">Webmasters Akademie Nürnberg</span>
+              <span class="timeline__duration">1 Jahr</span>
+            </div>
+          </div>
+          <!-- Berufserfahrung -->
+          <div class="timeline-col">
+            <p class="timeline-col-header">Berufserfahrung</p>
+            <div class="timeline__item">
+              <span class="timeline__date">2015 – 2018</span>
+              <strong class="timeline__role">Praxispartner – Werbung &amp; Marktkommunikation</strong>
+              <span class="timeline__company">Schwäbisch Media · Ravensburg</span>
+              <span class="timeline__duration">3 Jahre · Praxisphase DHBW</span>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__date">Jan. 2019 – Apr. 2023</span>
+              <strong class="timeline__role">Marketing Leitung</strong>
+              <span class="timeline__company">Metzgerei Buchmann · Grünkraut</span>
+              <span class="timeline__duration">4 Jahre 3 Monate</span>
+            </div>
+            <div class="timeline__item timeline__item--current">
+              <em class="timeline__badge">Aktuell</em>
+              <span class="timeline__date">Apr. 2024 – heute</span>
+              <strong class="timeline__role">Creative Marketing Specialist – Web, Content &amp; Events</strong>
+              <span class="timeline__company">dtm Datentechnik Moll GmbH · Meckenbeuren</span>
+              <span class="timeline__duration" id="duration-dtm" data-start="2024-04"></span>
+            </div>
+          </div>
+        </div><!-- /about-timeline-grid -->
+
+        <!-- Sprachen + Zertifikate nebeneinander -->
+        <div class="lang-cert-grid">
+            <!-- Sprachkenntnisse -->
+            <div class="about-languages">
+              <p class="skills-group__label">Sprachkenntnisse</p>
+              <div class="language-circles">
+
+                <div class="lang-circle">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="lang-track" cx="50" cy="50" r="42" fill="none" stroke-width="5"/>
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#0ad9c2" stroke-width="5" stroke-dasharray="264" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                    <circle class="lang-bg" cx="50" cy="50" r="36"/>
+                    <text x="50" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">Deutsch</text>
+                    <text x="50" y="60" text-anchor="middle" font-size="8" fill="currentColor" opacity="0.55">Muttersprache</text>
+                  </svg>
+                </div>
+
+                <div class="lang-circle">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="lang-track" cx="50" cy="50" r="42" fill="none" stroke-width="5"/>
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#0ad9c2" stroke-width="5" stroke-dasharray="264" stroke-dashoffset="26" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                    <circle class="lang-bg" cx="50" cy="50" r="36"/>
+                    <text x="50" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">Englisch</text>
+                    <text x="50" y="60" text-anchor="middle" font-size="8" fill="currentColor" opacity="0.55">2000 – heute</text>
+                  </svg>
+                </div>
+
+                <div class="lang-circle">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="lang-track" cx="50" cy="50" r="42" fill="none" stroke-width="5"/>
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#0ad9c2" stroke-width="5" stroke-dasharray="264" stroke-dashoffset="145" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                    <circle class="lang-bg" cx="50" cy="50" r="36"/>
+                    <text x="50" y="47" text-anchor="middle" font-size="10" font-weight="700" fill="currentColor">Französisch</text>
+                    <text x="50" y="60" text-anchor="middle" font-size="8" fill="currentColor" opacity="0.55">2006 – 2011</text>
+                  </svg>
+                </div>
+
+                <div class="lang-circle">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="lang-track" cx="50" cy="50" r="42" fill="none" stroke-width="5"/>
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#0ad9c2" stroke-width="5" stroke-dasharray="264" stroke-dashoffset="158" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                    <circle class="lang-bg" cx="50" cy="50" r="36"/>
+                    <text x="50" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">Spanisch</text>
+                    <text x="50" y="60" text-anchor="middle" font-size="8" fill="currentColor" opacity="0.55">2011 – 2017</text>
+                  </svg>
+                </div>
+
+                <div class="lang-circle">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="lang-track" cx="50" cy="50" r="42" fill="none" stroke-width="5"/>
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#0ad9c2" stroke-width="5" stroke-dasharray="264" stroke-dashoffset="224" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                    <circle class="lang-bg" cx="50" cy="50" r="36"/>
+                    <text x="50" y="47" text-anchor="middle" font-size="10" font-weight="700" fill="currentColor">Chinesisch</text>
+                    <text x="50" y="60" text-anchor="middle" font-size="8" fill="currentColor" opacity="0.55">2012 – 2013</text>
+                  </svg>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Zertifikate -->
+            <div class="certs">
+              <p class="skills-group__label">Zertifikate</p>
+              <div class="cert-item">
+                <div class="cert-icon cert-icon--t3n"><svg viewBox="0 0 200 62" xmlns="http://www.w3.org/2000/svg"><path d="M132.371369,25.8838026 L129.71371,25.8838026 L129.71371,24.8351674 C129.394666,25.2326913 128.98244,25.545372 128.51358,25.7454856 C127.952435,25.9926121 127.344144,26.1144583 126.731083,26.1025363 C125.416655,26.144243 124.149636,25.6096004 123.262612,24.6389503 C122.363856,23.6653708 121.914478,22.3787019 121.914478,20.7789435 C121.914478,19.1791851 122.363856,17.8925161 123.262612,16.9189366 C124.152443,15.9468679 125.423486,15.4131913 126.740735,15.4585673 C128.004142,15.4585673 128.946871,15.8209791 129.568922,16.5458026 L129.568922,10.5241919 L132.381021,10.5241919 L132.371369,25.8838026 Z M127.194403,17.9386217 C126.527714,17.9165147 125.885518,18.1909967 125.440863,18.6881064 C124.964908,19.2797972 124.726333,20.0274424 124.771622,20.7853768 C124.725824,21.5394374 124.964638,22.2832396 125.440863,22.8697805 C126.386588,23.8377184 127.937036,23.8592867 128.909333,22.9180306 C129.368974,22.3841122 129.600113,21.6908749 129.552834,20.9880272 L129.552834,20.5344764 C129.59345,19.8393356 129.36277,19.1555453 128.909333,18.6269896 C128.465164,18.158915 127.839019,17.9075823 127.194403,17.9386217 Z M136.322465,10.5853086 C136.779098,10.5761608 137.218809,10.758063 137.535464,11.0871095 C137.860015,11.4152638 138.037634,11.8609377 138.027742,12.3223117 C138.036086,12.7777155 137.858305,13.2168264 137.535464,13.5382139 C137.219823,13.8691097 136.779734,14.0523356 136.322465,14.0432315 C135.869109,14.0515006 135.433314,13.8681168 135.122335,13.5382139 C134.467702,12.8529285 134.476252,11.7716126 135.14164,11.0967595 C135.446931,10.7694585 135.874824,10.5841251 136.322465,10.5853086 Z M137.738167,25.8838026 L134.90998,25.8838026 L134.90998,15.6708677 L137.741384,15.6708677 L137.738167,25.8838026 Z M144.527102,15.4682173 C145.895614,15.4682173 146.889823,15.8896014 147.509729,16.7323696 L147.509729,15.6708677 L150.164171,15.6708677 L150.164171,26.2665866 C150.164171,27.741967 149.706213,28.9214135 148.790296,29.8049262 C147.87438,30.6884389 146.646365,31.1237619 145.106253,31.1108952 C143.604751,31.1108952 142.416419,30.7592057 141.541258,30.0558267 C140.666602,29.3328222 140.098623,28.305208 139.95181,27.1801215 L142.760692,27.0804047 C142.810128,27.5525425 143.065671,27.9787297 143.458891,28.2448401 C143.921115,28.5387114 144.46247,28.6835594 145.009728,28.6597908 C145.631921,28.69506 146.244468,28.4939943 146.724658,28.0968732 C147.171159,27.6760337 147.407022,27.0782751 147.368159,26.4660203 L147.368159,25.005651 C146.707498,25.7304745 145.764769,26.0928863 144.539972,26.0928863 C143.221106,26.1383964 141.948612,25.6034287 141.058632,24.6293003 C140.162021,23.6557208 139.713715,22.3690518 139.713715,20.7692934 C139.713715,19.169535 140.162021,17.8828661 141.058632,16.9092866 C141.94976,15.9469524 143.216216,15.4207691 144.527102,15.4682173 Z M144.990423,17.9386217 C144.323733,17.9165147 143.681538,18.1909967 143.236883,18.6881064 C142.348821,19.9406228 142.348821,21.6172642 143.236883,22.8697805 C143.688103,23.3402267 144.309139,23.6101886 144.961022,23.619257 C145.612905,23.6283254 146.241214,23.3757432 146.705353,22.9180306 C147.15879,22.3894749 147.38947,21.7056847 147.348854,21.0105439 L147.348854,20.537693 C147.38947,19.8425522 147.15879,19.158762 146.705353,18.6302063 C146.261763,18.1609479 145.63554,17.9084092 144.990423,17.9386217 Z M154.038047,10.5853086 C154.493718,10.5762749 154.932391,10.7582305 155.247828,11.0871095 C155.573243,11.4149367 155.751993,11.8605379 155.743324,12.3223117 C155.750446,12.7781169 155.571532,13.2171545 155.247828,13.5382139 C154.93458,13.8706393 154.494738,14.0542491 154.038047,14.0432315 C153.583578,14.052414 153.146436,13.868955 152.8347,13.5382139 C152.183431,12.8515991 152.19196,11.7729951 152.854005,11.0967595 C153.160057,10.7686358 153.589288,10.5832279 154.038047,10.5853086 Z M155.437661,25.8838026 L152.609474,25.8838026 L152.609474,15.6708677 L155.437661,15.6708677 L155.437661,25.8838026 Z M161.891976,18.1637888 L161.872671,21.9594622 C161.836456,22.3920674 161.991676,22.8188118 162.297382,23.1271143 C162.599152,23.3831534 162.986212,23.5163502 163.381681,23.5002483 C163.675586,23.4925872 163.968332,23.4603075 164.256842,23.4037481 L164.256842,25.9770861 C163.736832,26.0525133 163.212152,26.0912092 162.6867,26.0928863 C161.547703,26.0928863 160.653237,25.8066024 160.003301,25.2340347 C159.353365,24.661467 159.031614,23.8036877 159.038049,22.6606968 L159.057354,18.1734388 L157.236246,18.1734388 L157.236246,15.6708677 L159.076659,15.6708677 L159.095964,12.290145 L161.927369,12.290145 L161.924151,15.6708677 L164.269712,15.6708677 L164.269712,18.1605721 L161.891976,18.1637888 Z M170.125571,15.4778673 C171.483358,15.4778673 172.51725,15.8263402 173.227246,16.5232859 C173.937242,17.2202316 174.29224,18.2420612 174.29224,19.5887747 L174.29224,25.8934526 L171.560578,25.8934526 L171.560578,25.0635511 C170.89777,25.7635856 169.966254,26.1454668 169.002662,26.1121863 C168.119993,26.1622247 167.250049,25.883777 166.560576,25.3305349 C165.939993,24.7521058 165.612693,23.9252082 165.669327,23.0788642 C165.669327,21.1295608 167.006736,20.0959367 169.681555,19.977992 L171.464053,19.8782752 L171.464053,19.4826245 C171.464053,18.4275559 171.035052,17.9000217 170.177051,17.9000217 C169.790465,17.8742016 169.41193,18.0187598 169.141015,18.2956724 C168.901102,18.5587469 168.773015,18.9048388 168.783872,19.2606741 L165.952467,19.1416572 C165.964201,18.1669968 166.391452,17.2436719 167.126857,16.6037027 C167.939038,15.8387649 169.02327,15.4299671 170.138441,15.4682173 L170.125571,15.4778673 Z M171.464053,21.7825452 L169.951826,21.8822621 C168.984429,21.9208622 168.499659,22.2757684 168.497514,22.9469807 C168.497514,23.5688707 168.885759,23.8787434 169.66225,23.876599 C170.129705,23.8924962 170.587036,23.7381869 170.949252,23.4423482 C171.29574,23.1322017 171.481739,22.6809464 171.454401,22.216796 L171.464053,21.7825452 Z M179.215022,25.8934526 L176.386836,25.8934526 L176.386836,10.5241919 L179.215022,10.5241919 L179.215022,25.8934526 Z M128.08887,35.8973037 C129.41359,35.8504527 130.692543,36.3851705 131.589515,37.3608897 C132.488271,38.3344692 132.936577,39.6211381 132.934432,41.2208966 C132.932287,42.820655 132.483981,44.1073239 131.589515,45.0809034 C130.689443,46.050788 129.411332,46.5804557 128.08887,46.5316227 C126.861928,46.5316227 125.925634,46.1692109 125.279988,45.4443874 L125.279988,51.3534146 L122.451801,51.3534146 L122.451801,36.0935207 L125.125548,36.0935207 L125.125548,37.161456 C125.743309,36.3186878 126.731083,35.8973037 128.08887,35.8973037 Z M127.644854,38.3677081 C126.998456,38.3412706 126.372518,38.5972164 125.929924,39.0689427 C125.477081,39.597836 125.246484,40.2813797 125.286423,40.9764294 L125.286423,41.452497 C125.246484,42.1475467 125.477081,42.8310905 125.929924,43.3599837 C126.394067,43.8180937 127.022791,44.0706605 127.674948,44.0609835 C128.327105,44.0513065 128.948055,43.7801964 129.398394,43.3085169 C130.287426,42.0563095 130.287426,40.3790503 129.398394,39.1268428 C128.956456,38.6230222 128.311509,38.3443262 127.641637,38.3677081 L127.644854,38.3677081 Z M136.094022,31.014395 C136.550713,31.0033774 136.990555,31.1869872 137.303804,31.5194126 C137.964971,32.2027578 137.964971,33.2871718 137.303804,33.970517 C136.988366,34.299396 136.549693,34.4813516 136.094022,34.4723179 C135.640045,34.4823319 135.202977,34.3000727 134.890675,33.970517 C134.239406,33.2839021 134.247935,32.2052982 134.90998,31.5290626 C135.214708,31.2005737 135.642675,31.0140422 136.090804,31.014395 L136.094022,31.014395 Z M137.509724,46.312889 L134.67832,46.312889 L134.67832,36.0935207 L137.509724,36.0935207 L137.509724,46.312889 Z M140.695054,37.3608897 C142.873016,35.4089323 146.171536,35.4089323 148.349498,37.3608897 C149.351215,38.3344692 149.852073,39.6211381 149.852073,41.2208966 C149.91023,42.6520169 149.369229,44.0426337 148.35915,45.0583867 C146.185738,47.0221966 142.878119,47.0221966 140.704706,45.0583867 C139.689418,44.0427332 139.144699,42.6492222 139.202132,41.2144632 C139.193552,39.625427 139.69012,38.3409025 140.691836,37.3608897 L140.695054,37.3608897 Z M146.306382,39.1300595 C145.84134,38.6431647 145.197274,38.3677051 144.523885,38.3677051 C143.850495,38.3677051 143.206429,38.6431647 142.741387,39.1300595 C142.261138,39.7148892 142.01876,40.4590599 142.062493,41.2144632 C142.018342,41.9669762 142.26091,42.7082823 142.741387,43.2892169 C143.209614,43.7702733 143.85249,44.0416437 144.523885,44.0416437 C145.19528,44.0416437 145.838156,43.7702733 146.306382,43.2892169 C146.785724,42.7076575 147.028142,41.9668092 146.985276,41.2144632 C147.026524,40.4588458 146.783166,39.7151888 146.303165,39.1300595 L146.306382,39.1300595 Z M156.943454,35.8973037 C158.00379,35.8514799 159.03463,36.2529718 159.78451,37.003839 C160.498796,37.7436737 160.857012,38.7644311 160.859157,40.0661112 L160.859157,46.312889 L158.03097,46.312889 L158.03097,40.6225955 C158.064435,40.0801102 157.894679,39.5446001 157.554779,39.1204095 C157.226957,38.7593611 156.75498,38.5635416 156.267778,38.5864419 C155.758437,38.5669698 155.266402,38.7729121 154.92286,39.1493595 C154.565432,39.5620435 154.381029,40.0966734 154.40806,40.6418955 L154.40806,46.312889 L151.576655,46.312889 L151.576655,36.0935207 L154.250402,36.0935207 L154.250402,37.142156 C154.765203,36.3122545 155.661814,35.8973037 156.940236,35.8973037 L156.943454,35.8973037 Z M172.406782,42.1247815 L165.524539,42.1247815 C165.518077,42.6893218 165.730207,43.2344952 166.11656,43.6462675 C166.519834,44.0296915 167.063437,44.2298531 167.619135,44.1995352 C168.627286,44.1995352 169.240757,43.8242567 169.459548,43.0736999 L172.307039,43.2120168 C172.127609,44.1852957 171.56556,45.0461088 170.74655,45.6020044 C169.856368,46.2319436 168.786657,46.5579631 167.696355,46.5316227 C166.145518,46.5316227 164.894981,46.050194 163.944744,45.0873368 C162.994508,44.1244795 162.520462,42.8378105 162.522607,41.2273299 C162.522607,39.5932603 162.993435,38.2980136 163.935092,37.3415896 C164.910925,36.3735849 166.245553,35.8550208 167.619135,35.9101704 C169.075592,35.9101704 170.238184,36.3615768 171.10691,37.2643895 C171.972419,38.1650578 172.393912,39.40991 172.393912,40.9892961 L172.406782,42.1247815 Z M167.59983,38.1489744 C167.05834,38.1244991 166.530079,38.3206596 166.135865,38.692592 C165.74956,39.1032912 165.531414,39.6439244 165.524539,40.2076447 L169.556073,40.2076447 C169.565107,39.6550032 169.375601,39.117447 169.021967,38.692592 C168.649346,38.3135655 168.130338,38.1151724 167.59983,38.1489744 Z M183.549001,42.1247815 L176.673194,42.1247815 C176.666731,42.6893218 176.878862,43.2344952 177.265214,43.6462675 C177.668488,44.0296915 178.212091,44.2298531 178.767789,44.1995352 C179.774868,44.1995352 180.376542,43.8231845 180.608202,43.0736999 L183.455694,43.2120168 C183.276263,44.1852957 182.714214,45.0461088 181.895204,45.6020044 C181.005022,46.2319436 179.935311,46.5579631 178.845009,46.5316227 C177.294172,46.5316227 176.043635,46.050194 175.093399,45.0873368 C174.143162,44.1244795 173.669116,42.8378105 173.671261,41.2273299 C173.671261,39.5932603 174.14209,38.2980136 175.083746,37.3415896 C176.05958,36.3735849 177.394208,35.8550208 178.767789,35.9101704 C180.224246,35.9101704 181.386838,36.3615768 182.255565,37.2643895 C183.121073,38.1650578 183.542566,39.40991 183.542566,40.9892961 L183.549001,42.1247815 Z M178.742049,38.1489744 C178.2016,38.1250096 177.674528,38.3211595 177.281302,38.692592 C176.892544,39.1017182 176.673993,39.6433555 176.669976,40.2076447 L180.70151,40.2076447 C180.710544,39.6550032 180.521038,39.117447 180.167404,38.692592 C179.793791,38.3130534 179.273587,38.1146521 178.742049,38.1489744 Z M190.830215,35.9970206 L190.830215,38.7826589 C190.128686,38.746754 189.439387,38.9764611 188.899712,39.4259934 C188.417778,39.8599188 188.154685,40.4862234 188.182209,41.1340464 L188.182209,46.312889 L185.360457,46.312889 L185.360457,36.0935207 L188.092118,36.0935207 L188.092118,37.2611728 C188.619789,36.4184047 189.543213,35.9970206 190.830215,35.9970206 Z M195.810913,35.8973037 C197.037854,35.8973037 197.996671,36.2007432 198.687362,36.807622 C199.381382,37.4162812 199.804046,38.2764409 199.861751,39.1976096 L197.049652,39.3552266 C197.011042,38.5253251 196.582041,38.1103743 195.76265,38.1103743 C195.001174,38.1103743 194.620436,38.3998749 194.620436,38.9788759 C194.619747,39.052241 194.626212,39.1254986 194.639741,39.1976096 C194.652007,39.2634024 194.68205,39.3245846 194.726613,39.3745266 C194.771659,39.42921 194.813486,39.4742434 194.852096,39.5128435 C194.907814,39.5650547 194.973465,39.6055295 195.045146,39.6318604 L195.267154,39.7315772 C195.325069,39.7573106 195.41516,39.7894773 195.540642,39.8312941 L195.83987,39.9181442 L196.197013,40.0082111 C196.361106,40.0468111 196.486589,40.0821945 196.576679,40.1079279 C197.496215,40.3079345 198.369584,40.6801116 199.150683,41.2048132 C199.733839,41.6690372 200.049465,42.3916556 199.993669,43.1348166 C200.037675,44.0878606 199.637185,45.0074414 198.90937,45.6245211 C198.186504,46.2313999 197.178352,46.5348394 195.884915,46.5348394 C194.591478,46.5348394 193.586544,46.2485555 192.870113,45.6759878 C192.125135,45.0687324 191.671678,44.1749052 191.621721,43.2152334 L194.449908,43.0543998 C194.488518,43.8993124 194.973289,44.3217687 195.90422,44.3217687 C196.229497,44.3391421 196.551843,44.2523792 196.824427,44.074085 C197.045978,43.9189141 197.174244,43.6624483 197.165482,43.3921504 C197.179797,43.1184879 197.040974,42.8595018 196.805122,42.7198659 C196.339407,42.4950863 195.847692,42.328703 195.341157,42.2244983 C194.826356,42.0926148 194.420951,41.9832479 194.131375,41.9028311 C193.806627,41.7957513 193.489512,41.6667889 193.182211,41.5168304 C192.892096,41.3905221 192.631346,41.2054159 192.416445,40.9732128 C192.230602,40.7442229 192.082851,40.4868116 191.978864,40.2108614 C191.546055,38.9950723 191.894875,37.6383333 192.860461,36.7818886 C193.583327,36.1921654 194.571101,35.8973037 195.823783,35.8973037 L195.810913,35.8973037 Z M85.0676118,0.311256991 C81.5156333,0.934837039 78.1379708,2.31011893 75.1609142,4.34496418 C74.9806481,2.97698913 74.7217467,1.62052533 74.3854956,0.28230694 L61.1937255,0.28230694 C64.5292036,7.15137417 63.6879693,15.3160891 59.0219097,21.3611612 C65.6721947,27.9069004 67.2604998,38.0297253 62.9343957,46.2968056 L77.606218,46.2968056 L77.606218,18.456506 C79.250363,16.6776862 81.8629769,14.4227988 85.0804818,13.9242146 C89.2149756,13.2808801 92.5515282,16.0954684 92.5515282,20.3286093 L92.5515282,46.2968056 L107.496838,46.2968056 L107.496838,19.5308746 C107.496838,6.83145194 97.4517881,-1.77314672 85.0676118,0.311256991 Z M43.9865094,15.648351 C46.6599055,15.7177102 49.1088411,14.1609499 50.1800371,11.7111963 C51.251233,9.26144266 50.7311298,6.40709192 48.8646601,4.4923457 C46.9981904,2.57759948 44.1574637,1.98419191 41.6802656,2.9915769 C39.2030675,3.99896189 37.5832657,6.40630172 37.5836746,9.07990595 L37.5836746,15.648351 L43.9865094,15.648351 Z M45.054721,28.7852411 L37.5836746,28.7852411 L37.5836746,36.4473547 C37.5836746,40.6772789 40.9266622,44.1094684 45.054721,44.1094684 C49.1827798,44.1094684 52.5257673,40.6772789 52.5257673,36.4473547 C52.5257673,32.2174305 49.1827798,28.7852411 45.054721,28.7852411 Z M37.5836746,28.7852411 L37.5836746,15.648351 L24.7715702,15.648351 L24.7715702,0.28230694 L9.82625994,0.28230694 L9.82625994,15.648351 L0,15.648351 L0,28.7852411 L9.82625994,28.7852411 L9.82625994,36.4473547 C9.79378626,45.9836006 13.4990598,55.1531655 20.1480156,61.9909502 L30.7110842,51.1571976 C26.8858306,47.2187585 24.7539963,41.9401969 24.7715702,36.4505714 L24.7715702,28.7852411 L37.5836746,28.7852411 Z"/></svg></div>
+                <div><strong>Claude Cowork</strong><span>t3n Magazin · Juni 2026</span></div>
+              </div>
+              <div class="cert-item">
+                <div class="cert-icon cert-icon--t3n"><svg viewBox="0 0 200 62" xmlns="http://www.w3.org/2000/svg"><path d="M132.371369,25.8838026 L129.71371,25.8838026 L129.71371,24.8351674 C129.394666,25.2326913 128.98244,25.545372 128.51358,25.7454856 C127.952435,25.9926121 127.344144,26.1144583 126.731083,26.1025363 C125.416655,26.144243 124.149636,25.6096004 123.262612,24.6389503 C122.363856,23.6653708 121.914478,22.3787019 121.914478,20.7789435 C121.914478,19.1791851 122.363856,17.8925161 123.262612,16.9189366 C124.152443,15.9468679 125.423486,15.4131913 126.740735,15.4585673 C128.004142,15.4585673 128.946871,15.8209791 129.568922,16.5458026 L129.568922,10.5241919 L132.381021,10.5241919 L132.371369,25.8838026 Z M127.194403,17.9386217 C126.527714,17.9165147 125.885518,18.1909967 125.440863,18.6881064 C124.964908,19.2797972 124.726333,20.0274424 124.771622,20.7853768 C124.725824,21.5394374 124.964638,22.2832396 125.440863,22.8697805 C126.386588,23.8377184 127.937036,23.8592867 128.909333,22.9180306 C129.368974,22.3841122 129.600113,21.6908749 129.552834,20.9880272 L129.552834,20.5344764 C129.59345,19.8393356 129.36277,19.1555453 128.909333,18.6269896 C128.465164,18.158915 127.839019,17.9075823 127.194403,17.9386217 Z M136.322465,10.5853086 C136.779098,10.5761608 137.218809,10.758063 137.535464,11.0871095 C137.860015,11.4152638 138.037634,11.8609377 138.027742,12.3223117 C138.036086,12.7777155 137.858305,13.2168264 137.535464,13.5382139 C137.219823,13.8691097 136.779734,14.0523356 136.322465,14.0432315 C135.869109,14.0515006 135.433314,13.8681168 135.122335,13.5382139 C134.467702,12.8529285 134.476252,11.7716126 135.14164,11.0967595 C135.446931,10.7694585 135.874824,10.5841251 136.322465,10.5853086 Z M137.738167,25.8838026 L134.90998,25.8838026 L134.90998,15.6708677 L137.741384,15.6708677 L137.738167,25.8838026 Z M144.527102,15.4682173 C145.895614,15.4682173 146.889823,15.8896014 147.509729,16.7323696 L147.509729,15.6708677 L150.164171,15.6708677 L150.164171,26.2665866 C150.164171,27.741967 149.706213,28.9214135 148.790296,29.8049262 C147.87438,30.6884389 146.646365,31.1237619 145.106253,31.1108952 C143.604751,31.1108952 142.416419,30.7592057 141.541258,30.0558267 C140.666602,29.3328222 140.098623,28.305208 139.95181,27.1801215 L142.760692,27.0804047 C142.810128,27.5525425 143.065671,27.9787297 143.458891,28.2448401 C143.921115,28.5387114 144.46247,28.6835594 145.009728,28.6597908 C145.631921,28.69506 146.244468,28.4939943 146.724658,28.0968732 C147.171159,27.6760337 147.407022,27.0782751 147.368159,26.4660203 L147.368159,25.005651 C146.707498,25.7304745 145.764769,26.0928863 144.539972,26.0928863 C143.221106,26.1383964 141.948612,25.6034287 141.058632,24.6293003 C140.162021,23.6557208 139.713715,22.3690518 139.713715,20.7692934 C139.713715,19.169535 140.162021,17.8828661 141.058632,16.9092866 C141.94976,15.9469524 143.216216,15.4207691 144.527102,15.4682173 Z M144.990423,17.9386217 C144.323733,17.9165147 143.681538,18.1909967 143.236883,18.6881064 C142.348821,19.9406228 142.348821,21.6172642 143.236883,22.8697805 C143.688103,23.3402267 144.309139,23.6101886 144.961022,23.619257 C145.612905,23.6283254 146.241214,23.3757432 146.705353,22.9180306 C147.15879,22.3894749 147.38947,21.7056847 147.348854,21.0105439 L147.348854,20.537693 C147.38947,19.8425522 147.15879,19.158762 146.705353,18.6302063 C146.261763,18.1609479 145.63554,17.9084092 144.990423,17.9386217 Z M154.038047,10.5853086 C154.493718,10.5762749 154.932391,10.7582305 155.247828,11.0871095 C155.573243,11.4149367 155.751993,11.8605379 155.743324,12.3223117 C155.750446,12.7781169 155.571532,13.2171545 155.247828,13.5382139 C154.93458,13.8706393 154.494738,14.0542491 154.038047,14.0432315 C153.583578,14.052414 153.146436,13.868955 152.8347,13.5382139 C152.183431,12.8515991 152.19196,11.7729951 152.854005,11.0967595 C153.160057,10.7686358 153.589288,10.5832279 154.038047,10.5853086 Z M155.437661,25.8838026 L152.609474,25.8838026 L152.609474,15.6708677 L155.437661,15.6708677 L155.437661,25.8838026 Z M161.891976,18.1637888 L161.872671,21.9594622 C161.836456,22.3920674 161.991676,22.8188118 162.297382,23.1271143 C162.599152,23.3831534 162.986212,23.5163502 163.381681,23.5002483 C163.675586,23.4925872 163.968332,23.4603075 164.256842,23.4037481 L164.256842,25.9770861 C163.736832,26.0525133 163.212152,26.0912092 162.6867,26.0928863 C161.547703,26.0928863 160.653237,25.8066024 160.003301,25.2340347 C159.353365,24.661467 159.031614,23.8036877 159.038049,22.6606968 L159.057354,18.1734388 L157.236246,18.1734388 L157.236246,15.6708677 L159.076659,15.6708677 L159.095964,12.290145 L161.927369,12.290145 L161.924151,15.6708677 L164.269712,15.6708677 L164.269712,18.1605721 L161.891976,18.1637888 Z M170.125571,15.4778673 C171.483358,15.4778673 172.51725,15.8263402 173.227246,16.5232859 C173.937242,17.2202316 174.29224,18.2420612 174.29224,19.5887747 L174.29224,25.8934526 L171.560578,25.8934526 L171.560578,25.0635511 C170.89777,25.7635856 169.966254,26.1454668 169.002662,26.1121863 C168.119993,26.1622247 167.250049,25.883777 166.560576,25.3305349 C165.939993,24.7521058 165.612693,23.9252082 165.669327,23.0788642 C165.669327,21.1295608 167.006736,20.0959367 169.681555,19.977992 L171.464053,19.8782752 L171.464053,19.4826245 C171.464053,18.4275559 171.035052,17.9000217 170.177051,17.9000217 C169.790465,17.8742016 169.41193,18.0187598 169.141015,18.2956724 C168.901102,18.5587469 168.773015,18.9048388 168.783872,19.2606741 L165.952467,19.1416572 C165.964201,18.1669968 166.391452,17.2436719 167.126857,16.6037027 C167.939038,15.8387649 169.02327,15.4299671 170.138441,15.4682173 L170.125571,15.4778673 Z M171.464053,21.7825452 L169.951826,21.8822621 C168.984429,21.9208622 168.499659,22.2757684 168.497514,22.9469807 C168.497514,23.5688707 168.885759,23.8787434 169.66225,23.876599 C170.129705,23.8924962 170.587036,23.7381869 170.949252,23.4423482 C171.29574,23.1322017 171.481739,22.6809464 171.454401,22.216796 L171.464053,21.7825452 Z M179.215022,25.8934526 L176.386836,25.8934526 L176.386836,10.5241919 L179.215022,10.5241919 L179.215022,25.8934526 Z M128.08887,35.8973037 C129.41359,35.8504527 130.692543,36.3851705 131.589515,37.3608897 C132.488271,38.3344692 132.936577,39.6211381 132.934432,41.2208966 C132.932287,42.820655 132.483981,44.1073239 131.589515,45.0809034 C130.689443,46.050788 129.411332,46.5804557 128.08887,46.5316227 C126.861928,46.5316227 125.925634,46.1692109 125.279988,45.4443874 L125.279988,51.3534146 L122.451801,51.3534146 L122.451801,36.0935207 L125.125548,36.0935207 L125.125548,37.161456 C125.743309,36.3186878 126.731083,35.8973037 128.08887,35.8973037 Z M127.644854,38.3677081 C126.998456,38.3412706 126.372518,38.5972164 125.929924,39.0689427 C125.477081,39.597836 125.246484,40.2813797 125.286423,40.9764294 L125.286423,41.452497 C125.246484,42.1475467 125.477081,42.8310905 125.929924,43.3599837 C126.394067,43.8180937 127.022791,44.0706605 127.674948,44.0609835 C128.327105,44.0513065 128.948055,43.7801964 129.398394,43.3085169 C130.287426,42.0563095 130.287426,40.3790503 129.398394,39.1268428 C128.956456,38.6230222 128.311509,38.3443262 127.641637,38.3677081 L127.644854,38.3677081 Z M136.094022,31.014395 C136.550713,31.0033774 136.990555,31.1869872 137.303804,31.5194126 C137.964971,32.2027578 137.964971,33.2871718 137.303804,33.970517 C136.988366,34.299396 136.549693,34.4813516 136.094022,34.4723179 C135.640045,34.4823319 135.202977,34.3000727 134.890675,33.970517 C134.239406,33.2839021 134.247935,32.2052982 134.90998,31.5290626 C135.214708,31.2005737 135.642675,31.0140422 136.090804,31.014395 L136.094022,31.014395 Z M137.509724,46.312889 L134.67832,46.312889 L134.67832,36.0935207 L137.509724,36.0935207 L137.509724,46.312889 Z M140.695054,37.3608897 C142.873016,35.4089323 146.171536,35.4089323 148.349498,37.3608897 C149.351215,38.3344692 149.852073,39.6211381 149.852073,41.2208966 C149.91023,42.6520169 149.369229,44.0426337 148.35915,45.0583867 C146.185738,47.0221966 142.878119,47.0221966 140.704706,45.0583867 C139.689418,44.0427332 139.144699,42.6492222 139.202132,41.2144632 C139.193552,39.625427 139.69012,38.3409025 140.691836,37.3608897 L140.695054,37.3608897 Z M146.306382,39.1300595 C145.84134,38.6431647 145.197274,38.3677051 144.523885,38.3677051 C143.850495,38.3677051 143.206429,38.6431647 142.741387,39.1300595 C142.261138,39.7148892 142.01876,40.4590599 142.062493,41.2144632 C142.018342,41.9669762 142.26091,42.7082823 142.741387,43.2892169 C143.209614,43.7702733 143.85249,44.0416437 144.523885,44.0416437 C145.19528,44.0416437 145.838156,43.7702733 146.306382,43.2892169 C146.785724,42.7076575 147.028142,41.9668092 146.985276,41.2144632 C147.026524,40.4588458 146.783166,39.7151888 146.303165,39.1300595 L146.306382,39.1300595 Z M156.943454,35.8973037 C158.00379,35.8514799 159.03463,36.2529718 159.78451,37.003839 C160.498796,37.7436737 160.857012,38.7644311 160.859157,40.0661112 L160.859157,46.312889 L158.03097,46.312889 L158.03097,40.6225955 C158.064435,40.0801102 157.894679,39.5446001 157.554779,39.1204095 C157.226957,38.7593611 156.75498,38.5635416 156.267778,38.5864419 C155.758437,38.5669698 155.266402,38.7729121 154.92286,39.1493595 C154.565432,39.5620435 154.381029,40.0966734 154.40806,40.6418955 L154.40806,46.312889 L151.576655,46.312889 L151.576655,36.0935207 L154.250402,36.0935207 L154.250402,37.142156 C154.765203,36.3122545 155.661814,35.8973037 156.940236,35.8973037 L156.943454,35.8973037 Z M172.406782,42.1247815 L165.524539,42.1247815 C165.518077,42.6893218 165.730207,43.2344952 166.11656,43.6462675 C166.519834,44.0296915 167.063437,44.2298531 167.619135,44.1995352 C168.627286,44.1995352 169.240757,43.8242567 169.459548,43.0736999 L172.307039,43.2120168 C172.127609,44.1852957 171.56556,45.0461088 170.74655,45.6020044 C169.856368,46.2319436 168.786657,46.5579631 167.696355,46.5316227 C166.145518,46.5316227 164.894981,46.050194 163.944744,45.0873368 C162.994508,44.1244795 162.520462,42.8378105 162.522607,41.2273299 C162.522607,39.5932603 162.993435,38.2980136 163.935092,37.3415896 C164.910925,36.3735849 166.245553,35.8550208 167.619135,35.9101704 C169.075592,35.9101704 170.238184,36.3615768 171.10691,37.2643895 C171.972419,38.1650578 172.393912,39.40991 172.393912,40.9892961 L172.406782,42.1247815 Z M167.59983,38.1489744 C167.05834,38.1244991 166.530079,38.3206596 166.135865,38.692592 C165.74956,39.1032912 165.531414,39.6439244 165.524539,40.2076447 L169.556073,40.2076447 C169.565107,39.6550032 169.375601,39.117447 169.021967,38.692592 C168.649346,38.3135655 168.130338,38.1151724 167.59983,38.1489744 Z M183.549001,42.1247815 L176.673194,42.1247815 C176.666731,42.6893218 176.878862,43.2344952 177.265214,43.6462675 C177.668488,44.0296915 178.212091,44.2298531 178.767789,44.1995352 C179.774868,44.1995352 180.376542,43.8231845 180.608202,43.0736999 L183.455694,43.2120168 C183.276263,44.1852957 182.714214,45.0461088 181.895204,45.6020044 C181.005022,46.2319436 179.935311,46.5579631 178.845009,46.5316227 C177.294172,46.5316227 176.043635,46.050194 175.093399,45.0873368 C174.143162,44.1244795 173.669116,42.8378105 173.671261,41.2273299 C173.671261,39.5932603 174.14209,38.2980136 175.083746,37.3415896 C176.05958,36.3735849 177.394208,35.8550208 178.767789,35.9101704 C180.224246,35.9101704 181.386838,36.3615768 182.255565,37.2643895 C183.121073,38.1650578 183.542566,39.40991 183.542566,40.9892961 L183.549001,42.1247815 Z M178.742049,38.1489744 C178.2016,38.1250096 177.674528,38.3211595 177.281302,38.692592 C176.892544,39.1017182 176.673993,39.6433555 176.669976,40.2076447 L180.70151,40.2076447 C180.710544,39.6550032 180.521038,39.117447 180.167404,38.692592 C179.793791,38.3130534 179.273587,38.1146521 178.742049,38.1489744 Z M190.830215,35.9970206 L190.830215,38.7826589 C190.128686,38.746754 189.439387,38.9764611 188.899712,39.4259934 C188.417778,39.8599188 188.154685,40.4862234 188.182209,41.1340464 L188.182209,46.312889 L185.360457,46.312889 L185.360457,36.0935207 L188.092118,36.0935207 L188.092118,37.2611728 C188.619789,36.4184047 189.543213,35.9970206 190.830215,35.9970206 Z M195.810913,35.8973037 C197.037854,35.8973037 197.996671,36.2007432 198.687362,36.807622 C199.381382,37.4162812 199.804046,38.2764409 199.861751,39.1976096 L197.049652,39.3552266 C197.011042,38.5253251 196.582041,38.1103743 195.76265,38.1103743 C195.001174,38.1103743 194.620436,38.3998749 194.620436,38.9788759 C194.619747,39.052241 194.626212,39.1254986 194.639741,39.1976096 C194.652007,39.2634024 194.68205,39.3245846 194.726613,39.3745266 C194.771659,39.42921 194.813486,39.4742434 194.852096,39.5128435 C194.907814,39.5650547 194.973465,39.6055295 195.045146,39.6318604 L195.267154,39.7315772 C195.325069,39.7573106 195.41516,39.7894773 195.540642,39.8312941 L195.83987,39.9181442 L196.197013,40.0082111 C196.361106,40.0468111 196.486589,40.0821945 196.576679,40.1079279 C197.496215,40.3079345 198.369584,40.6801116 199.150683,41.2048132 C199.733839,41.6690372 200.049465,42.3916556 199.993669,43.1348166 C200.037675,44.0878606 199.637185,45.0074414 198.90937,45.6245211 C198.186504,46.2313999 197.178352,46.5348394 195.884915,46.5348394 C194.591478,46.5348394 193.586544,46.2485555 192.870113,45.6759878 C192.125135,45.0687324 191.671678,44.1749052 191.621721,43.2152334 L194.449908,43.0543998 C194.488518,43.8993124 194.973289,44.3217687 195.90422,44.3217687 C196.229497,44.3391421 196.551843,44.2523792 196.824427,44.074085 C197.045978,43.9189141 197.174244,43.6624483 197.165482,43.3921504 C197.179797,43.1184879 197.040974,42.8595018 196.805122,42.7198659 C196.339407,42.4950863 195.847692,42.328703 195.341157,42.2244983 C194.826356,42.0926148 194.420951,41.9832479 194.131375,41.9028311 C193.806627,41.7957513 193.489512,41.6667889 193.182211,41.5168304 C192.892096,41.3905221 192.631346,41.2054159 192.416445,40.9732128 C192.230602,40.7442229 192.082851,40.4868116 191.978864,40.2108614 C191.546055,38.9950723 191.894875,37.6383333 192.860461,36.7818886 C193.583327,36.1921654 194.571101,35.8973037 195.823783,35.8973037 L195.810913,35.8973037 Z M85.0676118,0.311256991 C81.5156333,0.934837039 78.1379708,2.31011893 75.1609142,4.34496418 C74.9806481,2.97698913 74.7217467,1.62052533 74.3854956,0.28230694 L61.1937255,0.28230694 C64.5292036,7.15137417 63.6879693,15.3160891 59.0219097,21.3611612 C65.6721947,27.9069004 67.2604998,38.0297253 62.9343957,46.2968056 L77.606218,46.2968056 L77.606218,18.456506 C79.250363,16.6776862 81.8629769,14.4227988 85.0804818,13.9242146 C89.2149756,13.2808801 92.5515282,16.0954684 92.5515282,20.3286093 L92.5515282,46.2968056 L107.496838,46.2968056 L107.496838,19.5308746 C107.496838,6.83145194 97.4517881,-1.77314672 85.0676118,0.311256991 Z M43.9865094,15.648351 C46.6599055,15.7177102 49.1088411,14.1609499 50.1800371,11.7111963 C51.251233,9.26144266 50.7311298,6.40709192 48.8646601,4.4923457 C46.9981904,2.57759948 44.1574637,1.98419191 41.6802656,2.9915769 C39.2030675,3.99896189 37.5832657,6.40630172 37.5836746,9.07990595 L37.5836746,15.648351 L43.9865094,15.648351 Z M45.054721,28.7852411 L37.5836746,28.7852411 L37.5836746,36.4473547 C37.5836746,40.6772789 40.9266622,44.1094684 45.054721,44.1094684 C49.1827798,44.1094684 52.5257673,40.6772789 52.5257673,36.4473547 C52.5257673,32.2174305 49.1827798,28.7852411 45.054721,28.7852411 Z M37.5836746,28.7852411 L37.5836746,15.648351 L24.7715702,15.648351 L24.7715702,0.28230694 L9.82625994,0.28230694 L9.82625994,15.648351 L0,15.648351 L0,28.7852411 L9.82625994,28.7852411 L9.82625994,36.4473547 C9.79378626,45.9836006 13.4990598,55.1531655 20.1480156,61.9909502 L30.7110842,51.1571976 C26.8858306,47.2187585 24.7539963,41.9401969 24.7715702,36.4505714 L24.7715702,28.7852411 L37.5836746,28.7852411 Z"/></svg></div>
+                <div><strong>Profi-Automatisierung mit Make</strong><span>t3n Magazin · Mai 2026</span></div>
+              </div>
+            </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ⑥ Skills & Expertise -->
+    <section class="skills-section" id="skills">
+      <div class="skills-inner">
+        <div class="skills-head">
+          <div>
+            <p class="section-label">Skills</p>
+            <h2 class="section-title fluid">Expertise.</h2>
+            <p class="skills-lead">Neues lerne ich schnell und gern – allein 2026 kamen Automatisierung mit Make, Claude Cowork sowie GitHub und GitLab dazu.</p>
+          </div>
+          <p class="skills-legend"><i aria-hidden="true"></i> Schwerpunkt</p>
+        </div>
+        <ul class="skills-grid">
+          <li class="skill-flip skill-flip--wide">
+            <div class="skill-flip__inner">
+              <div class="skill-card">
+                <div class="skill-card__head">
+                  <span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+                  <h3 class="skill-card__title">Web &amp; Tech</h3>
+                </div>
+                <ul class="skill-card__tags">
+                  <li class="is-core">HTML</li>
+                  <li class="is-core">CSS</li>
+                  <li class="is-core">WordPress</li>
+                  <li>JavaScript</li>
+                  <li>PHP</li>
+                  <li>YAML</li>
+                  <li>GitHub</li>
+                  <li>GitLab</li>
+                  <li>VS Code</li>
+                  <li>Dreamweaver</li>
+                  <li>TYPO3 inkl. Newsletter</li>
+                  <li>Joomla</li>
+                  <li>Kirby CMS</li>
+                  <li>Divi Builder</li>
+                </ul>
+              </div>
+              <div class="skill-flip__back" aria-hidden="true">
+                <img src="assets/webp/skill-web.webp" alt="" loading="lazy" width="2400" height="600" style="object-position:62% 12%" />
+                <span class="skill-flip__label">Web &amp; Tech</span>
+              </div>
+            </div>
+          </li>
+          <li class="skill-flip">
+            <div class="skill-flip__inner">
+              <div class="skill-card">
+                <div class="skill-card__head">
+                  <span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6l-5 4H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></span>
+                  <h3 class="skill-card__title">Marketing, Content &amp; Events</h3>
+                </div>
+                <ul class="skill-card__tags">
+                  <li class="is-core">Social Media</li>
+                  <li class="is-core">Event-Organisation</li>
+                  <li class="is-core">Newsletter</li>
+                  <li>Branding &amp; Markenführung</li>
+                  <li>SEO &amp; GEO</li>
+                  <li>Meta Business Suite</li>
+                  <li>Werbung</li>
+                  <li>Kommunikation</li>
+                  <li>Reiseorganisation</li>
+                </ul>
+              </div>
+              <div class="skill-flip__back" aria-hidden="true">
+                <!-- Bild tauschen: assets/webp/skill-marketing.webp (3:2, 1200×800 px) -->
+                <img src="assets/webp/ps-card__bg-marketing.webp" alt="" loading="lazy" />
+                <span class="skill-flip__label">Marketing, Content &amp; Events</span>
+              </div>
+            </div>
+          </li>
+          <li class="skill-flip">
+            <div class="skill-flip__inner">
+              <div class="skill-card">
+                <div class="skill-card__head">
+                  <span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+                  <h3 class="skill-card__title">Design &amp; Video</h3>
+                </div>
+                <ul class="skill-card__tags">
+                  <li class="is-core">Illustrator</li>
+                  <li class="is-core">InDesign</li>
+                  <li class="is-core">Photoshop</li>
+                  <li>Premiere Pro</li>
+                  <li>CapCut</li>
+                  <li>Canva</li>
+                  <li>Videobearbeitung</li>
+                  <li>Corporate Design</li>
+                  <li>Typografie</li>
+                </ul>
+              </div>
+              <div class="skill-flip__back" aria-hidden="true">
+                <!-- Bild tauschen: assets/webp/skill-design.webp (3:2, 1200×800 px) -->
+                <img src="assets/webp/ps-card__bg-design.webp" alt="" loading="lazy" />
+                <span class="skill-flip__label">Design &amp; Video</span>
+              </div>
+            </div>
+          </li>
+          <li class="skill-flip">
+            <div class="skill-flip__inner">
+              <div class="skill-card">
+                <div class="skill-card__head">
+                  <span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg></span>
+                  <h3 class="skill-card__title">CRM &amp; Automatisierung</h3>
+                </div>
+                <ul class="skill-card__tags">
+                  <li class="is-core">Zoho CRM</li>
+                  <li>Make.com</li>
+                  <li class="is-core">Mailing-Automatisierung</li>
+                  <li>Salesforce</li>
+                  <li>Zoho Analytics</li>
+                  <li>Zoho Campaigns</li>
+                  <li>Zoho Events</li>
+                </ul>
+              </div>
+              <div class="skill-flip__back" aria-hidden="true">
+                <!-- Bild tauschen: assets/webp/skill-crm.webp (3:2, 1200×800 px) -->
+                <img src="assets/webp/ps-card__bg-crm.webp" alt="" loading="lazy" />
+                <span class="skill-flip__label">CRM &amp; Automatisierung</span>
+              </div>
+            </div>
+          </li>
+          <li class="skill-flip">
+            <div class="skill-flip__inner">
+              <div class="skill-card">
+                <div class="skill-card__head">
+                  <span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
+                  <h3 class="skill-card__title">Künstliche Intelligenz</h3>
+                </div>
+                <ul class="skill-card__tags">
+                  <li class="is-core">Prompt Engineering</li>
+                  <li class="is-core">KI-gestütztes Arbeiten</li>
+                  <li class="is-core">Claude</li>
+                  <li>ChatGPT</li>
+                  <li>Copilot</li>
+                  <li>Automatisierung mit KI</li>
+                  <li>Content-Erstellung mit KI</li>
+                </ul>
+              </div>
+              <div class="skill-flip__back" aria-hidden="true">
+                <!-- Bild tauschen: assets/webp/skill-ki.webp (3:2, 1200×800 px) -->
+                <img src="assets/webp/ps-card__bg-ki.webp" alt="" loading="lazy" />
+                <span class="skill-flip__label">Künstliche Intelligenz</span>
+              </div>
+            </div>
+          </li>
+          <li class="skill-flip">
+            <div class="skill-flip__inner">
+              <div class="skill-card">
+                <div class="skill-card__head">
+                  <span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg></span>
+                  <h3 class="skill-card__title">Personal</h3>
+                </div>
+                <ul class="skill-card__tags">
+                  <li class="is-core">Recruiting</li>
+                  <li>Social Media Recruiting</li>
+                  <li>Bewerberauswahl</li>
+                  <li>Vorstellungsgespräche</li>
+                  <li>Onboarding</li>
+                </ul>
+              </div>
+              <div class="skill-flip__back" aria-hidden="true">
+                <!-- Bild tauschen: assets/webp/skill-personal.webp (3:2, 1200×800 px) -->
+                <img src="assets/webp/ps-card__bg-personal.webp" alt="" loading="lazy" />
+                <span class="skill-flip__label">Personal</span>
+              </div>
+            </div>
+          </li>
+          <li class="skill-flip">
+            <div class="skill-flip__inner">
+              <div class="skill-card">
+                <div class="skill-card__head">
+                  <span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4"/><path d="M8 20h8"/><path d="M7 12l3-3 2 2 4-4"/></svg></span>
+                  <h3 class="skill-card__title">Office &amp; Präsentation</h3>
+                </div>
+                <ul class="skill-card__tags">
+                  <li class="is-core">PowerPoint</li>
+                  <li class="is-core">Präsentationen mit Canva</li>
+                  <li>Excel</li>
+                  <li>Word</li>
+                  <li>Outlook</li>
+                  <li>Microsoft 365</li>
+                </ul>
+              </div>
+              <div class="skill-flip__back" aria-hidden="true">
+                <img src="assets/webp/skill-office.webp" alt="" loading="lazy" width="1200" height="800" />
+                <span class="skill-flip__label">Office &amp; Präsentation</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Referenz-Zitate -->
+    <section class="quotes-section">
+      <div class="quotes-inner">
+        <p class="section-label">Referenzen</p>
+        <p style="font-size:0.82rem;opacity:0.5;margin-top:0.25rem;margin-bottom:0;">Auszüge aus Arbeitszeugnissen</p>
+        <div class="quotes-grid">
+          <div class="quote-card">
+            <p class="quote-card__text">Bereits jetzt eine gesuchte Spezialistin auf ihrem Fachgebiet.</p>
+            <p class="quote-card__source">dtm Datentechnik Moll GmbH · 2025</p>
+          </div>
+          <div class="quote-card">
+            <p class="quote-card__text">Die ihr gestellten Aufgaben erledigte sie zuverlässig, verantwortungsbewusst und stets zu unserer vollsten Zufriedenheit.</p>
+            <p class="quote-card__source">Buchmann GmbH · 2023</p>
+          </div>
+          <div class="quote-card">
+            <p class="quote-card__text">Sie zeigte ein hohes Maß an Motivation und Eigeninitiative und bewies eine hervorragende Leistungsbereitschaft.</p>
+            <p class="quote-card__source">Schwäbisch Media · 2018</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ Kontakt -->
+    <section class="contact-section" id="contact">
+      <div class="contact-inner" style="grid-template-columns: 1fr; max-width: 480px; margin: auto;">
+        <div class="contact-card">
+          <h4>Kontakt aufnehmen</h4>
+          <p>Projekt, Zusammenarbeit oder einfach Hallo? Schreib mir gerne auf LinkedIn — ich freue mich über Nachrichten.</p>
+          <a href="https://www.linkedin.com/in/sophie-wolf-marketing/" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn--primary">
+            Schreib mir auf LinkedIn →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1rem;padding:1rem 2rem;">
+    <span>© 2026 Sophie Wolf</span>
+    <span style="opacity:0.35;font-size:0.78rem;">Private Bewerbungsseite · keine Datenerhebung · Kontakt via LinkedIn</span>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox__close" onclick="closeLightbox()" aria-label="Schließen">×</button>
+    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" style="display:none;" />
+    <video id="lightbox-video" controls playsinline onclick="event.stopPropagation()"
+      style="display:none; max-width:min(90vw,420px); max-height:88vh; border-radius:0.6rem; box-shadow:0 24px 60px rgba(0,0,0,0.6);">
+    </video>
+  </div>
+  <script>
+    function openLightbox(src, alt, type) {
+      const lb  = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const vid = document.getElementById('lightbox-video');
+      if (type === 'video') {
+        img.style.display = 'none';
+        vid.style.display = 'block';
+        vid.src = src;
+        vid.play();
+      } else {
+        vid.style.display = 'none'; vid.pause(); vid.src = '';
+        img.style.display = 'block';
+        img.src = src; img.alt = alt || '';
+      }
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      const vid = document.getElementById('lightbox-video');
+      vid.pause(); vid.src = '';
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+  <!-- Dynamic employment duration -->
+  <script>
+    (() => {
+      document.querySelectorAll('.timeline__duration[data-start]').forEach(el => {
+        const [startYear, startMonth] = el.dataset.start.split('-').map(Number);
+        const now = new Date();
+        let years  = now.getFullYear() - startYear;
+        let months = now.getMonth() + 1 - startMonth; // getMonth() is 0-based
+        if (months < 0) { years--; months += 12; }
+        const parts = [];
+        if (years  > 0) parts.push(years  === 1 ? '1 Jahr'   : `${years} Jahre`);
+        if (months > 0) parts.push(months === 1 ? '1 Monat'  : `${months} Monate`);
+        el.textContent = parts.join(' ') || 'Gerade angefangen';
+      });
+    })();
+  </script>
+
+  <!-- Lightboxen Auto-Galerie -->
+  <script>
+    (() => {
+      const gallery = document.getElementById('lightboxen-gallery');
+      if (!gallery) return;
+      const imgs = gallery.querySelectorAll('img');
+      let idx = 0;
+      setInterval(() => {
+        imgs[idx].classList.remove('active');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('active');
+      }, 2800);
+    })();
+  </script>
+
+  <!-- Stat Counter Animation -->
+  <script>
+    (() => {
+      const stats = document.querySelectorAll('.stat-card__number[data-count]');
+      if (!stats.length) return;
+      const animate = (el) => {
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const start = performance.now();
+        const step = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(ease * target) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animate(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      stats.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+  <!-- netforum Gallery: Click + Auto-Switch -->
+  <script>
+    (() => {
+      const mainImg = document.getElementById('gallery-main');
+      const thumbs  = Array.from(document.querySelectorAll('#gallery-thumbs img'));
+      if (!mainImg || !thumbs.length) return;
+      mainImg.style.transition = 'opacity 0.25s';
+      let autoIdx = 0;
+
+      function showThumb(idx) {
+        autoIdx = idx;
+        mainImg.style.opacity = '0';
+        setTimeout(() => {
+          mainImg.src = thumbs[idx].src;
+          mainImg.alt = thumbs[idx].alt;
+          mainImg.style.opacity = '1';
+        }, 150);
+        thumbs.forEach(t => t.classList.remove('active'));
+        thumbs[idx].classList.add('active');
+      }
+
+      thumbs.forEach((thumb, i) => {
+        thumb.addEventListener('click', () => { showThumb(i); });
+      });
+
+      setInterval(() => {
+        showThumb((autoIdx + 1) % thumbs.length);
+      }, 3200);
+    })();
+  </script>
+
+  <!-- DTM Website + Fahrzeugbeklebung Auto-Galerien -->
+  <script>
+    (['dtm-gallery', 'vehicle-gallery']).forEach(id => {
+      const gallery = document.getElementById(id);
+      if (!gallery) return;
+      const imgs = gallery.querySelectorAll('img');
+      let idx = 0;
+      setInterval(() => {
+        imgs[idx].classList.remove('active');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('active');
+      }, 2800);
+    });
+  </script>
+
+  <!-- Scroll animation init (GSAP fallback for older browsers) -->
+  <script type="module">
+    // Set initial animation state
+    const html = document.documentElement;
+    html.dataset.theme    = html.dataset.theme    || 'dark';
+    html.dataset.animate  = 'true';
+    html.dataset.snap     = 'true';
+    html.dataset.syncScrollbar = 'true';
+    html.style.setProperty('--start', '220');
+    html.style.setProperty('--hue',   '220');
+    html.style.setProperty('--end',   '340');
+
+    // GSAP fallback only if CSS scroll-timeline is not supported
+    const needsGsap = !CSS.supports('(animation-timeline: scroll()) and (animation-range: 0% 100%)');
+    if (needsGsap) {
+      const [{ default: gsap }, { default: ScrollTrigger }] = await Promise.all([
+        import('https://cdn.skypack.dev/gsap@3.12.0'),
+        import('https://cdn.skypack.dev/gsap@3.12.0/ScrollTrigger'),
+      ]);
+      gsap.registerPlugin(ScrollTrigger);
+
+      const items = gsap.utils.toArray('.scroll-words ul li');
+      gsap.set(items, { opacity: (i) => (i !== 0 ? 0.2 : 1) });
+
+      const dimmer = gsap.timeline()
+        .to(items.slice(1), { opacity: 1, stagger: 0.5 })
+        .to(items.slice(0, items.length - 1), { opacity: 0.2, stagger: 0.5 }, 0);
+
+      ScrollTrigger.create({
+        trigger: items[0], endTrigger: items[items.length - 1],
+        start: 'center center', end: 'center center',
+        animation: dimmer, scrub: 0.2,
+      });
+
+      const scroller = gsap.timeline().fromTo(html, { '--hue': 220 }, { '--hue': 340, ease: 'none' });
+      ScrollTrigger.create({
+        trigger: items[0], endTrigger: items[items.length - 1],
+        start: 'center center', end: 'center center',
+        animation: scroller, scrub: 0.2,
+      });
+    }
+  </script>
+
+  <!-- Autoplay-Fallback für gemutete Videos -->
+  <script>
+    window.addEventListener('load', () => {
+      document.querySelectorAll('video[muted]').forEach(v => {
+        v.play().catch(() => {});
+      });
+    });
+  </script>
+
+  <!-- Hamburger Menu -->
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
